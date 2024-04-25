@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\modules\Patients\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,39 +21,58 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+// Patients
+Route::get('/patients', [PatientController::class, 'index'])->name('patients');
+Route::get('/patients/form', [PatientController::class, 'create'])->name('create-patient');
+Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
+Route::get('/patients/form/{id}', [PatientController::class, 'edit'])->name('patients.edit');
+Route::put('/patients/form/{id}', [PatientController::class, 'update'])->name('patients.update');
+Route::delete('/patients/{id}', [PatientController::class, 'destroy'])->name('patients.destroy');
 
 
-Route::get('/citas-medicas', function () {
-    return view('citas_medicas.index');
-})->name('citas-medicas');
-Route::get('/citas-medicas/crear', function () {
-    return view('citas_medicas.crear_cita');
-})->name('crear-cita');
+// Doctors
+Route::get('/doctors', function () {
+    return view('doctors.index');
+})->name('doctors');
+
+Route::get('/doctors/create', function () {
+    return view('doctors.create');
+})->name('create-doctor');
 
 
-Route::get('/pacientes', function () {
-    return view('pacientes.index');
-})->name('pacientes');
-Route::get('/pacientes/crear', function () {
-    return view('pacientes.crear_paciente');
-})->name('crear-paciente');
+//Medical appointments
+Route::get('/medical-appointments', function () {
+    return view('medical_appointments.index');
+})->name('medical-appointments');
+
+Route::get('/medical-appointment/create', function () {
+    return view('medical_appointments.create');
+})->name('create-appointment');
 
 
-Route::get('/medicos', function () {
-    return view('medicos.index');
-})->name('medicos');
-Route::get('/medicos/crear', function () {
-    return view('medicos.crear_medico');
-})->name('crear-medico');
+
+Route::get('/especialidades-medicas', function () {
+    return view('medical_speciality.index');
+})->name('medical-specialities');
+
+Route::get('/medical-speciality/create', function () {
+    return view('medical_speciality.create');
+})->name('create-speciality');
 
 
-Route::get('/reportes', function () {
-    return view('reportes.index');
-})->name('reportes');
+// Reports
+Route::get('/reports', function () {
+    return view('reports.index');
+})->name('reports');
 
 
-Route::get('/configuracion', function () {
-    return view('configuracion.index');
-})->name('configuracion');
+//Users
+Route::get('/users', function () {
+    return view('users.index');
+})->name('users');
+
+Route::get('/users/crear', function () {
+    return view('users.create');
+})->name('create-user');
 
 

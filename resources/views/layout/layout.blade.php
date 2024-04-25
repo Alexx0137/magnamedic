@@ -18,7 +18,7 @@
     <div class="sidebar">
         <div class="logo">
             <a href="/">
-                <img src="{{ asset('storage/images/magnamedic_gray.png') }}" alt="Logo de Mi Empresa">
+                <img src="{{ url('storage/images/magnamedic_gray.png') }}" alt="Logo de Mi Empresa">
             </a>
             <hr>
         </div>
@@ -31,27 +31,31 @@
 
             <li class="{{ request()->is('citas-medicas*') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-calendar"></i>
-                <a href="{{ route('citas-medicas') }}"><span>Citas médicas</span></a>
+                <a href="{{ route('medical-appointments') }}"><span>Citas médicas</span></a>
             </li>
-            <li class="{{ request()->is('pacientes*') ? 'active' : '' }}">
+            <li class="{{ request()->is('patients*') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-users"></i>
-                <a href="{{ route('pacientes') }}"><span>Pacientes</span></a>
+                <a href="{{ route('patients') }}"><span>Pacientes</span></a>
             </li>
             <hr>
 
             <li class="{{ request()->is('medicos*') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-stethoscope"></i>
-                <a href="{{ route('medicos') }}"><span>Médicos</span></a>
+                <a href="{{ route('doctors') }}"><span>Médicos</span></a>
+            </li>
+            <li class="{{ request()->is('especialidades-medicas*') ? 'active' : '' }}">
+                <i class="fas fa-fw fa-kit-medical"></i>
+                <a href="{{ route('medical-specialities') }}"><span>Especialidades médicas</span></a>
             </li>
             <hr>
 
             <li class="{{ request()->is('reportes*') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <a href="{{ route('reportes') }}"><span>Reportes</span></a>
+                <a href="{{ route('reports') }}"><span>Reportes</span></a>
             </li>
-            <li class="{{ request()->is('configuracion') ? 'active' : '' }}">
-                <i class="fas fa-fw fa-cogs"></i>
-                <a href="{{ route('configuracion') }}"><span>Configuración</span></a>
+            <li class="{{ request()->is('usuarios*') ? 'active' : '' }}">
+                <i class="fas fa-fw fa-users"></i>
+                <a href="{{ route('users') }}"><span>Usuarios</span></a>
             </li>
         </ul>
     </div>
@@ -78,21 +82,7 @@
             <main>
                 <!-- inicio contenido principal -->
                 <div class="container-fluid">
-
-                    <!-- Titulo página -->
-                    <div class="title-container">
-                        @yield('title')
-                    </div>
-
-                    <!-- Datos del contenido -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            @yield('card-header')
-                        </div>
-                        <div class="card-body">
-                            @yield('content')
-                        </div>
-                    </div>
+                    @yield('content')
                 </div>
             </main>
         </div>

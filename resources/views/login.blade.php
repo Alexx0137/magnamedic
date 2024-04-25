@@ -20,9 +20,9 @@
 <body class="bg-white">
 
 <div class="container">
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-5">
         <div class="col-lg-11 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-login o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
 
                     <div class="row">

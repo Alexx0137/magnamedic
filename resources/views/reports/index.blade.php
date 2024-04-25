@@ -1,11 +1,11 @@
-@extends('plantilla.layout')
-
-@section('title')
-    <h1>Reportes</h1>
-@endsection
-
+@extends('layout.layout')
 
 @section('content')
+
+    <div class="title-container">
+        <h1>Reportes</h1>
+    </div>
+
 
     <div class="row">
 
@@ -77,7 +77,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 @endsection
