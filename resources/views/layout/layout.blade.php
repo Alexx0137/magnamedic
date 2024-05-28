@@ -9,7 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="../../css/app.css">
     <link rel="icon" type="image/png" href="{{ asset('storage/images/favicon.ico') }}">
 </head>
 
@@ -18,11 +18,12 @@
     <div class="sidebar">
         <div class="logo">
             <a href="/">
-                <img src="{{ url('storage/images/magnamedic_gray.png') }}" alt="Logo de Mi Empresa">
+                <img src="{{ url('storage/assets/img/magnamedic_gray.png') }}" alt="Logo de Mi Empresa">
             </a>
             <hr>
         </div>
         <ul>
+            <hr>
             <li class="{{ request()->is('/') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-home"></i>
                 <a href="/"><span>Inicio</span></a>

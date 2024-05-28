@@ -21,13 +21,18 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
 // Patients
-Route::get('/patients', [PatientController::class, 'index'])->name('patients');
-Route::get('/patients/form', [PatientController::class, 'create'])->name('create-patient');
-Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
-Route::get('/patients/form/{id}', [PatientController::class, 'edit'])->name('patients.edit');
-Route::put('/patients/form/{id}', [PatientController::class, 'update'])->name('patients.update');
-Route::delete('/patients/{id}', [PatientController::class, 'destroy'])->name('patients.destroy');
+Route::controller(PatientController::class)->group(function (){
+    Route::get('/patients', 'index')->name('patients');
+    Route::get('/patients/form', 'create')->name('create-patient');
+    Route::post('/patients', 'store')->name('patients.store');
+    Route::get('/patients/form/{id}', 'edit')->name('patients.edit');
+    Route::put('/patients/form/{id}', 'update')->name('patients.update');
+    Route::delete('/patients/{id}', 'destroy')->name('patients.destroy');
+});
+
+
 
 
 // Doctors

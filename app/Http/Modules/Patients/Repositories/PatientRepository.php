@@ -31,7 +31,8 @@ class PatientRepository
     {
         return $this->model
             ->where(function ($query) use ($request) {
-                $query->Where('name', 'like', '%' . $request->filter . '%');
+                $query->Where('name', 'like', '%' . $request->filter . '%')
+                    ->orWhere('identification', 'like', '%' . $request->filter . '%');
             })
             ->paginate($request->per_page);
     }
