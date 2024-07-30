@@ -5,7 +5,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                <h2>Citas médicas</h2>
+                <h1 class="h3 mb-0 text-gray-800">Citas Médicas</h1>
                 <a href="{{ route('create-appointment') }}" class="btn btn-primary btn-sm btn-icon-split">
                     <i class="fas fa-plus fa-sm"></i>
                     Agendar cita

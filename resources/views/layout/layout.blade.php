@@ -6,9 +6,18 @@
     <title>Magnamedic</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- Toast CSS (opcional si usas una librería de toast diferente) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="../../css/app.css">
     <link rel="icon" type="image/png" href="{{ asset('storage/images/favicon.ico') }}">
 </head>
@@ -18,9 +27,8 @@
     <div class="sidebar">
         <div class="logo">
             <a href="/">
-                <img src="{{ url('storage/assets/img/magnamedic_gray.png') }}" alt="Logo de Mi Empresa">
+                <img src="{{ url('/assets/media/images/magnamedic(2).png') }}" alt="Logo de Mi Empresa">
             </a>
-            <hr>
         </div>
         <ul>
             <hr>
@@ -46,7 +54,7 @@
             </li>
             <li class="{{ request()->is('especialidades-medicas*') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-kit-medical"></i>
-                <a href="{{ route('medical-specialities') }}"><span>Especialidades médicas</span></a>
+                <a href="{{ route('medical-specialities') }}"><span>Especialidad médica</span></a>
             </li>
             <hr>
 
@@ -69,15 +77,49 @@
         <div id="content">
 
             <header>
-                <nav class="dashboard-navbar">
-                    <div class="user-profile">
-                        <span>Nelson García</span>
-                        <a href="/login">
-                            <img src="{{ asset('storage/images/undraw_profile.svg') }}" alt="Tu imagen de usuario">
-                        </a>
+                <nav class="dashboard-navbar navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <div class="d-flex justify-content-end w-100">
+                            <div *ngIf="user" class="user-profile dropdown">
+                                <a class="dropdown-toggle-no-arrow" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="text-gray-600 mr-2">
+
+                                    </span>
+                                    <img src="/assets/media/images/undraw_profile.svg" alt="User Avatar" class="img-profile rounded-circle" height="32" width="32">
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <!-- User info section -->
+                                    <a class="drop-info d-flex align-items-center" routerLink="/users/profile">
+                                        <div class="icon-container">
+                                            <i class="fas fa-user fa-fw"></i>
+                                        </div>
+                                        <div class="text-container">
+                                <span class="text-drop-user text-gray-800 fw-bold">
+
+                                </span>
+                                            <span class="role-drop badge-light-success mt-0">
+
+                                </span>
+                                            <span class="text-drop-email">
+
+                                </span>
+                                        </div>
+                                    </a>
+                                    <!-- Logout section -->
+                                    <a class="dropdown-item text-gray-800 fw-medium" (click)="onLogout()">
+                                        <i class="fas fa-sign-out-alt fa-fw text-gray-400 logout-icon"></i>
+                                        <span class="text-drop-logout">
+                            Cerrar sesión
+                            </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </header>
+
 
 
             <main>
@@ -93,6 +135,14 @@
         </footer>
     </div>
 </div>
+
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Toast JS (opcional si usas una librería de toast diferente) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 </body>
 </html>

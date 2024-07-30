@@ -18,7 +18,7 @@
 <div class="sidebar">
     <div class="logo">
         <a href="/">
-            <img src="#"
+            <img src="/public/assets/media/images/magnamedic(2).png"
                  alt="Logo de Mi Empresa"/>
         </a>
     </div>
@@ -47,7 +47,7 @@
         </li>
         <li>
             <FontAwesomeIcon icon={solidIcons.faKitMedical} class="iconSidebar"/>
-            <a href="/medical-specialities"><span>Especialidades médicas</span></a>
+            <a href="/medical-specialities"><span>Especialidad médica</span></a>
         </li>
         <hr/>
 

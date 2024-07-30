@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Http\modules\Patients\Models\Patient;
+use App\Http\modules\Patients\Models\medicalAppointment;
 use Illuminate\Database\Seeder;
 
 class PatientSeeder extends Seeder
@@ -15,6 +15,6 @@ class PatientSeeder extends Seeder
     public function run()
     {
         // Crear 10 registros de ejemplo
-        Patient::factory(100)->create();
+        medicalAppointment::factory(100)->create();
     }
 }

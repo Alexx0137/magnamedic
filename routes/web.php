@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\modules\Patients\Controllers\PatientController;
+use App\Http\Modules\MedicalSpecialities\Controllers\MedicalSpecialityController;
+use App\Http\Modules\users\Controllers\UserController;
+use App\Http\Modules\Patients\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,16 @@ Route::controller(PatientController::class)->group(function (){
 });
 
 
+// Medical specialities
+Route::controller(MedicalSpecialityController::class)->group(function () {
+    Route::get('/MedicalSpecialities', 'index')->name('medical-specialities');
+    Route::get('/MedicalSpecialities/form', 'create')->name('create-speciality');
+    Route::post('/MedicalSpecialities', 'store')->name('medical-specialities.store');
+    Route::get('/MedicalSpecialities/form/{id}', 'edit')->name('medical-specialities.edit');
+    Route::put('/MedicalSpecialities/form/{id}', 'update')->name('medical-specialities.update');
+    Route::delete('/MedicalSpecialities/{id}', 'destroy')->name('medical-specialities.destroy');
+});
+
 
 
 // Doctors
@@ -45,6 +57,8 @@ Route::get('/doctors/create', function () {
 })->name('create-doctor');
 
 
+
+
 //Medical appointments
 Route::get('/medical-appointments', function () {
     return view('medical_appointments.index');
@@ -55,14 +69,14 @@ Route::get('/medical-appointment/create', function () {
 })->name('create-appointment');
 
 
-
-Route::get('/especialidades-medicas', function () {
-    return view('medical_speciality.index');
-})->name('medical-specialities');
-
-Route::get('/medical-speciality/create', function () {
-    return view('medical_speciality.create');
-})->name('create-speciality');
+//
+//Route::get('/especialidades-medicas', function () {
+//    return view('MedicalSpecialities.index');
+//})->name('medical-specialities');
+//
+//Route::get('/medical-speciality/create', function () {
+//    return view('MedicalSpecialities.create');
+//})->name('create-speciality');
 
 
 // Reports
@@ -75,6 +89,31 @@ Route::get('/reports', function () {
 Route::get('/users', function () {
     return view('users.index');
 })->name('users');
+
+
+// users
+Route::controller(UserController::class)->group(function () {
+    Route::get('/Users', 'index')->name('users');
+    Route::get('/Users/form', 'create')->name('create-user');
+    Route::post('/Users', 'store')->name('users.store');
+    Route::get('/Users/form/{id}', 'edit')->name('users.edit');
+    Route::put('/Users/form/{id}', 'update')->name('users.update');
+    Route::delete('/Users/{id}', 'destroy')->name('users.destroy');
+//});
+
+// users
+//Route::controller(UserController::class)->group(function () {
+//    Route::get('/Users', 'index')->name('users');
+//    Route::get('/Users/form', 'create')->name('create-user');
+//    Route::post('/Users', 'store')->name('users.store');
+//    Route::get('/Users/form/{user}', 'edit')->name('users.edit');
+//    Route::put('/Users/form/{user}', 'update')->name('users.update');
+//    Route::delete('/Users/{user}', 'destroy')->name('users.destroy');
+});
+
+
+
+
 
 Route::get('/users/crear', function () {
     return view('users.create');

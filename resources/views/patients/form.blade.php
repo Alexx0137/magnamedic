@@ -83,13 +83,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="city">Ciudad:</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="city"
-                                   name="city"
-                                   value="{{ $patient->city ?? '' }}"
-                                   placeholder=""
-                                   required>
+{{--                            <input type="text"--}}
+{{--                                   class="form-control"--}}
+{{--                                   id="city"--}}
+{{--                                   name="city"--}}
+{{--                                   value="{{ $patient->city ?? '' }}"--}}
+{{--                                   placeholder=""--}}
+{{--                                   required>--}}
                         </div>
                         <div class="form-group col-md-6">
                             <label for="address">Dirección:</label>

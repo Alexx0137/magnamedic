@@ -5,10 +5,10 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                <h1 class="h3 mb-0 text-gray-800">Usuarios</h1>
-                <a href="{{ route('create-user') }}" class="btn btn-primary btn-sm btn-icon-split">
+                <h1 class="h3 mb-0 text-gray-800">Especialidades médicas</h1>
+                <a href="{{ route('create-speciality') }}"class="btn btn-primary btn-sm btn-icon-split">
                     <i class="fas fa-plus fa-sm"></i>
-                    Crear usuario
+                    Agregar especialidad
                 </a>
             </div>
         </div>
@@ -22,31 +22,29 @@
                 <table class="styled-table">
                     <thead>
                     <tr>
+                        <th>Código</th>
                         <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Rol</th>
-                        <th>Estado</th>
+                        <th>Consultorio</th>
                         <th style="width: 120px;">Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($specialities as $speciality)
                         <tr>
-                            <td>{{ $user->name }} {{ $user->last_name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role_id  }}</td>
-                            <td>{{ $user->state  }}</td>
+                            <td>{{ $speciality->code }}</td>
+                            <td>{{ $speciality->name }}</td>
+                            <td>{{ $speciality->consulting_room }}</td>
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}"
+                                <a href="{{ route('medical-specialities.edit', $speciality->id) }}"
                                    class="icon-color btn btn-bg-light btn-sm btn-active-color-primary me-3"
                                    title="Editar">
                                     <i class="fas fa-edit fa-sm"></i>
                                 </a>
-                                <form action="{{ route('users.destroy', $user->id) }}"
+                                <form action="{{ route('medical-specialities.destroy', $speciality->id) }}"
                                       method="POST"
                                       style="display:inline;"
                                       class="delete-form"
-                                      data-name="{{ $user->name }}">
+                                      data-name="{{ $speciality->name }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -60,6 +58,7 @@
                     @endforeach
 
 
+
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
                             // Manejador de eventos para los formularios de eliminación
@@ -68,12 +67,12 @@
                                     event.preventDefault(); // Prevenir el envío inmediato del formulario
 
                                     // Obtener el nombre de la especialidad desde el atributo data-name
-                                    const userName = form.getAttribute('data-name');
+                                    const specialityName = form.getAttribute('data-name');
 
                                     // Mostrar SweetAlert2 para confirmación
                                     Swal.fire({
                                         title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar el usuario "${userName}"?`,
+                                        text: `¡Estás seguro de eliminar la especialidad médica "${specialityName}"?`,
                                         icon: 'warning',
                                         showCancelButton: true,
                                         confirmButtonColor: '#3085d6',
@@ -107,4 +106,5 @@
             </div>
         </div>
     </div>
+
 @endsection

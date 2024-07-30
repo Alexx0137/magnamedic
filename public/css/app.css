@@ -60,7 +60,7 @@ aside, footer, header, main, nav, section {
 
 /* Estilos del sidebar */
 .sidebar {
-    width: 16rem;
+    width: 15rem;
     background-color: #5a5c69;
     color: #fff;
     padding: 0 15px;
@@ -105,14 +105,18 @@ aside, footer, header, main, nav, section {
 }
 
 .sidebar li {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
 }
+
 .sidebar li span {
     color: #FFFFFFCC;
     font-size: 0.85rem;
     display: inline;
     font-weight: 400;
+    padding-left: 6px;
 }
 
 
@@ -122,6 +126,7 @@ aside, footer, header, main, nav, section {
 a {
     text-decoration: none;
 }
+
 .sidebar a {
     text-decoration: none;
     color: #fff;
@@ -130,12 +135,27 @@ a {
 }
 
 /* Estilos para los iconos de FontAwesome en el sidebar */
-.sidebar i {
-    font-size: 18px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-
+.iconSidebar {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
 }
+
+
+#wrapper #content-wrapper {
+    background-color: #f8f9fc;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#wrapper #content-wrapper #content {
+    flex: 1 0 auto;
+}
+
+#wrapper {
+    display: flex;
+}
+
 
 /* Estilos para el contenido principal */
 .content {
@@ -240,7 +260,8 @@ footer {
 }
 
 .styled-table th, .styled-table td {
-    border: 1px solid  #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
     padding: 8px;
     text-align: center;
 }
@@ -250,11 +271,19 @@ footer {
     color: #1a202c;
 }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;}
+.styled-table thead tr {
+    border-bottom: 3px solid #e3e3e3;
+}
+
+td {
+    color: #5a5c69;
+}
+
+/*.btn-sm {*/
+/*    padding: 0.25rem 0.5rem;*/
+/*    font-size: 0.75rem;*/
+/*    line-height: 1.5;*/
+/*    border-radius: 0.2rem;}*/
 
 .btn-lg {
     padding: 0.45rem 0.7rem;
@@ -262,11 +291,11 @@ footer {
     line-height: 1.5;
     border-radius: 0.2rem;}
 
-.btn-primary {
-    color: #fff;
-    background-color: #4e73df;
-    border-color: #4e73df;
-}
+/*.btn-primary {*/
+/*    color: #fff;*/
+/*    background-color: #4e73df;*/
+/*    border-color: #4e73df;*/
+/*}*/
 .btn-primary:hover {
     background-color: #2980b9;
 }
@@ -520,4 +549,60 @@ td {
 }
 .observations {
     padding-right: 20px;
+}
+
+/*Botones de acciones*/
+
+
+.badge {
+    display: inline-block;
+    padding: 0.5em 0.85em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.475rem;
+}
+
+.badge-light-warning {
+    color: #f1da41 !important;
+    background-color: #fdfce7;
+}
+.badge-light-success {
+    color: #50CD89!important;
+    background-color: #E8FFF3;
+}
+.badge-light-danger {
+    color: #F1416C!important;
+    background-color: #ffeaf2;
+}
+
+.bg-warning {
+    color: #ffff !important;
+    background-color: rgba(255, 193, 7, 0.8) !important;
+}
+.bg-success{
+    color: #ffff!important;
+    background-color: rgba(80, 205, 137, 0.8) !important;
+}
+.bg-danger {
+    color: #ffff!important;
+    background-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+.btn-bg-light{
+    background-color: #F5F8FA;
+}
+.btn-active-color-primary:hover {
+    color: #1f9ef8;
+}
+.btn-active-color-danger:hover {
+    color: #f4212e;
+}
+
+.icon-color {
+    color: #7e7e7e;
 }
