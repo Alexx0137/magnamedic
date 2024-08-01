@@ -10,16 +10,16 @@ class Patient extends Model
     use HasFactory;
 
     protected $fillable = [
-        'identification',
         'identification_type_id',
+        'identification',
         'name',
         'last_name',
         'gender_id',
-        'date_of_birth',
+        'blood_type_id',
         'address',
-        'city',
         'telephone',
         'email',
-        'blood_type_id',
+        'birth_date',
+        'state'
     ];
 }

@@ -36,31 +36,35 @@
                                         </div>
                                         <h1 class="h4 text-gray-800 mb-0"><strong>Iniciar sesión</strong></h1>
                                     </div>
-                                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                                    <form method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="email"></label>
                                             <input type="email"
+                                                   value="{{ old('email' ) }}"
                                                    class="form-control form-control-user"
                                                    id="email"
-                                                   formControlName="email"
+                                                   name="email"
                                                    placeholder="Correo"
                                                    required
-                                                   autofocus>
+                                                   autofocus
+                                            >
+                                            @error('email') {{ $message }} @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="password"></label>
                                             <input type="password"
                                                    class="form-control form-control-user"
                                                    id="password"
-                                                   formControlName="password"
+                                                   name="password"
                                                    placeholder="Contraseña"
-                                                   required>
+                                                   required
+                                            >
+                                            @error('password') {{ $message }} @enderror
                                         </div>
                                         <div class="text-center">
                                             <button type="submit"
-                                                    class="btn btn-primary btn-user btn-block mt-3"
-                                                    href="{{ asset('/')}}"
-                                                   >
+                                                    class="btn btn-primary btn-user btn-block mt-3">
                                                 Iniciar sesión
                                             </button>
                                         </div>
@@ -72,13 +76,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 d-none d-lg-block gradient-bg d-flex align-items-center justify-content-center">
+                            <div
+                                class="col-lg-6 d-none d-lg-block gradient-bg d-flex align-items-center justify-content-center">
                                 <div class="form-login">
                                     <div class="overlay-panel overlay-right text-white">
                                         <h1 class="welcome-title">Bienvenido a <br>
                                             Magnamedic</h1>
-                                        <p class="explaining">Aquí, puedes programar, reprogramar y cancelar citas médicas fácilmente,
-                                            acceder a la información de los pacientes y médicos de manera rápida y segura,
+                                        <p class="explaining">Aquí, puedes programar, reprogramar y cancelar citas
+                                            médicas fácilmente,
+                                            acceder a la información de los pacientes y médicos de manera rápida y
+                                            segura,
                                             consultar el historial de citas y mantener un seguimiento detallado,
                                             gestionar especialidades y horarios de los doctores,
                                             recibir notificaciones y recordatorios de citas.

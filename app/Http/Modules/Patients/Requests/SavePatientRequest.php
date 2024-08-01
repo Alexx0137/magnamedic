@@ -29,17 +29,17 @@ class SavePatientRequest extends FormRequest
     public function rules(): array
     {
        return [
-            'identification'         => 'required|max:15',
-            'identification_type_id' => 'required',
-            'name'                   => 'required|max:255',
-            'last_name'              => 'required|max:255',
-            'gender_id'              => 'required',
-            'date_of_birth'          => 'required',
-            'address'                => 'required|max:255',
-            'city'                   => 'required|max:255',
-            'telephone'              => 'required|max:20',
-            'email'                  => 'required|max:255',
-            'blood_type_id'          => 'required'
+           'identification_type_id' => 'required|integer|exists:identification_types,id',
+           'identification'         => 'required|string|max:20',
+           'name'                   => 'required|string|max:45',
+           'last_name'              => 'required|string|max:45',
+           'gender_id'              => 'required|integer|exists:genders,id',
+           'blood_type_id'          => 'required|integer|exists:blood_types,id',
+           'address'                => 'required|string|max:255',
+           'telephone'              => 'required|string|regex:/^(\+\d{1,3}[- ]?)?\(?\d{1,4}\)?([- ]?\d{1,4}){1,4}$/',
+           'email'                  => 'required|email|max:255',
+           'birth_date'          => 'required|date',
+           'state'                  => 'required|boolean'
         ];
 
     }
@@ -58,9 +58,8 @@ class SavePatientRequest extends FormRequest
             'name'                   => 'nombre',
             'last_name'              => 'apellidos',
             'gender_id'              => 'género',
-            'date_of_birth'          => 'fecha de nacimiento',
+            'birth_date'          => 'fecha de nacimiento',
             'address'                => 'dirección',
-            'city'                   => 'ciudad',
             'telephone'              => 'teléfono',
             'email'                  => 'correo',
             'blood_type_id'          => 'tipo de sangre'

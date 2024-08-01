@@ -6,7 +6,7 @@
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-2">
                 <h1 class="h3 mb-0 text-gray-800">Especialidades médicas</h1>
-                <a href="{{ route('create-speciality') }}"class="btn btn-primary btn-sm btn-icon-split">
+                <a href="{{ route('create-speciality') }}" class="btn btn-primary btn-sm btn-icon-split">
                     <i class="fas fa-plus fa-sm"></i>
                     Agregar especialidad
                 </a>
@@ -25,7 +25,7 @@
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Consultorio</th>
-                        <th style="width: 120px;">Acciones</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,19 +57,14 @@
                         </tr>
                     @endforeach
 
-
-
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            // Manejador de eventos para los formularios de eliminación
-                            document.querySelectorAll('.delete-form').forEach(function(form) {
-                                form.addEventListener('submit', function(event) {
-                                    event.preventDefault(); // Prevenir el envío inmediato del formulario
+                        document.addEventListener('DOMContentLoaded', function () {
+                            document.querySelectorAll('.delete-form').forEach(function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    event.preventDefault();
 
-                                    // Obtener el nombre de la especialidad desde el atributo data-name
                                     const specialityName = form.getAttribute('data-name');
 
-                                    // Mostrar SweetAlert2 para confirmación
                                     Swal.fire({
                                         title: '¿Eliminar?',
                                         text: `¡Estás seguro de eliminar la especialidad médica "${specialityName}"?`,
@@ -81,14 +76,12 @@
                                         cancelButtonText: 'Cancelar'
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            // Enviar el formulario si se confirma
                                             form.submit();
                                         }
                                     });
                                 });
                             });
 
-                            // Mostrar toast si hay un mensaje de éxito en la sesión
                             @if(session('success'))
                             toastr.success("{{ session('success') }}", 'Éxito', {
                                 "positionClass": "toast-top-right",
@@ -96,10 +89,7 @@
                             });
                             @endif
                         });
-
                     </script>
-
-
 
                     </tbody>
                 </table>

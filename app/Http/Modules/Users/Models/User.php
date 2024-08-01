@@ -2,8 +2,11 @@
 
 namespace App\Http\Modules\Users\Models;
 
+use App\Http\Modules\Roles\Models\Role;
+use App\Http\Modules\IdentificationTypes\Models\IdentificationType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Model
 {
@@ -19,4 +22,22 @@ class User extends Model
         'role_id',
         'state',
     ];
+
+
+
+    /**
+     * Get the role associated with the user.
+     */
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Get the identification type associated with the user.
+     */
+    public function identificationType()
+    {
+        return $this->belongsTo(IdentificationType::class, 'identification_type_id');
+    }
 }

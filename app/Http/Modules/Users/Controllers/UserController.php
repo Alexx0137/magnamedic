@@ -40,6 +40,7 @@ class UserController extends Controller
     public function index(Request $request): View
     {
         $users = $this->user_repository->findAll($request);
+
         return view('users.index', compact('users'));
     }
 
@@ -77,8 +78,9 @@ class UserController extends Controller
      */
     public function edit(int $id): View
     {
-        $user = $this->user_repository->findById($id);
-        return view('users.edit', compact('user'));
+        $editingUser = $this->user_repository->findById($id);
+
+        return view('users.edit', compact('editingUser'));
     }
 
     /**
@@ -90,7 +92,8 @@ class UserController extends Controller
      */
     public function update(SaveUserRequest $request, int $id): RedirectResponse
     {
-        $user = $this->user_service->update($request->all(), $id);
+        $attributes = $request->validated();
+        $this->user_service->update($attributes, $id);
 
         return redirect()->route('users')
             ->with('success', 'Usuario actualizado con éxito.');

@@ -27,7 +27,7 @@ class PatientFactory extends Factory
             'name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'gender_id' => $this->faker->numberBetween(1, 2),
-            'date_of_birth' => $this->faker->date,
+            'birth_date' => $this->faker->date,
             'address' => $this->faker->address,
             'city' => $this->faker->city,
             'telephone' => $this->faker->phoneNumber,

@@ -26,7 +26,7 @@
                         <th>Correo</th>
                         <th>Rol</th>
                         <th>Estado</th>
-                        <th style="width: 120px;">Acciones</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,8 +34,12 @@
                         <tr>
                             <td>{{ $user->name }} {{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->role_id  }}</td>
-                            <td>{{ $user->state  }}</td>
+                            <td>{{ $user->role->name  }}</td>
+                            <td>
+                                <span class="{{ $user->state == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
+                                    {{ $user->state == 1 ? 'Activo' : 'Inactivo' }}
+                                </span>
+                            </td>
                             <td>
                                 <a href="{{ route('users.edit', $user->id) }}"
                                    class="icon-color btn btn-bg-light btn-sm btn-active-color-primary me-3"
@@ -46,7 +50,8 @@
                                       method="POST"
                                       style="display:inline;"
                                       class="delete-form"
-                                      data-name="{{ $user->name }}">
+                                      data-name="{{ $user->name }}"
+                                      data-last_name="{{ $user->last_name }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -62,18 +67,16 @@
 
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            // Manejador de eventos para los formularios de eliminación
                             document.querySelectorAll('.delete-form').forEach(function(form) {
                                 form.addEventListener('submit', function(event) {
-                                    event.preventDefault(); // Prevenir el envío inmediato del formulario
+                                    event.preventDefault();
 
-                                    // Obtener el nombre de la especialidad desde el atributo data-name
                                     const userName = form.getAttribute('data-name');
+                                    const userLastName = form.getAttribute('data-last_name');
 
-                                    // Mostrar SweetAlert2 para confirmación
                                     Swal.fire({
                                         title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar el usuario "${userName}"?`,
+                                        text: `¡Estás seguro de eliminar el usuario "${userName} ${userLastName}"?`,
                                         icon: 'warning',
                                         showCancelButton: true,
                                         confirmButtonColor: '#3085d6',
@@ -82,7 +85,6 @@
                                         cancelButtonText: 'Cancelar'
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            // Enviar el formulario si se confirma
                                             form.submit();
                                         }
                                     });

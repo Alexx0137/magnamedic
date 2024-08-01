@@ -33,7 +33,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="identification">Número de documento:</label>
-                        <input type="text" id="identification" class="form-control" name="identification" placeholder="" required>
+                        <input type="text" id="identification" class="form-control" name="identification" placeholder=""
+                               required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -53,11 +54,13 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="password">Contraseña:</label>
-                        <input type="password" id="password" class="form-control" name="password" placeholder="" required>
+                        <input type="password" id="password" class="form-control" name="password" placeholder=""
+                               required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="password_confirmation">Confirmar contraseña:</label>
-                        <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="" required>
+                        <input type="password" id="password_confirmation" class="form-control"
+                               name="password_confirmation" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-row mt-2">
@@ -78,7 +81,9 @@
 
                 <div class="form-row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1" onclick="window.history.back()">
+                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1"
+                                onclick="window.location.href='{{ route('users') }}'"
+                        >
                             <i class="fas fa-fw fa-arrow-left"></i>
                             Cancelar
                         </button>

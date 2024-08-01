@@ -2,9 +2,13 @@
 
 @section('content')
 
-
-
     <div class="card shadow mb-4">
+
+        @if(session('status'))
+            <br>
+            {{ session('status') }}
+        @endif
+
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-2">
                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -22,13 +26,13 @@
                                         Citas registradas
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-
+                                        {{ $totalAppointments }}
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-secondary" role="progressbar"
-                                             [style.width.%]="totalAppointments ? 100 : 0" aria-valuenow="totalAppointments ? 100 : 0" aria-valuemin="0"
+                                             style="width: 100%" aria-valuenow="100" aria-valuemin="0"
                                              aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -49,14 +53,13 @@
                                         Citas Atendidas
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-
+                                        {{ $attendedAppointments }}
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-success" role="progressbar"
-                                             [style.width.%]="attendedPercentage"
-                                             [attr.aria-valuenow]="attendedPercentage" aria-valuemin="0"
+                                             style="width: {{ $attendedPercentage }}%" aria-valuenow="{{ $attendedPercentage }}" aria-valuemin="0"
                                              aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -79,14 +82,13 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
                                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-
+                                                {{ $pendingAppointments }}
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="progress progress-sm mr-2">
                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                     [style.width.%]="pendingPercentage"
-                                                     [attr.aria-valuenow]="pendingPercentage" aria-valuemin="0"
+                                                     style="width: {{ $pendingPercentage }}%" aria-valuenow="{{ $pendingPercentage }}" aria-valuemin="0"
                                                      aria-valuemax="100"></div>
                                             </div>
                                         </div>
@@ -109,14 +111,13 @@
                                         Citas Canceladas
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-
+                                        {{ $canceledAppointments }}
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-warning" role="progressbar"
-                                             [style.width.%]="canceledPercentage"
-                                             [attr.aria-valuenow]="canceledPercentage" aria-valuemin="0"
+                                             style="width: {{ $canceledPercentage }}%" aria-valuenow="{{ $canceledPercentage }}" aria-valuemin="0"
                                              aria-valuemax="100"></div>
                                     </div>
                                 </div>

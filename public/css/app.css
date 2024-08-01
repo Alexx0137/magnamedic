@@ -25,14 +25,13 @@ root {
     --danger: #e74a3b;
     --light: #f8f9fc;
     --dark: #5a5c69;
-    --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 html {
     position: relative;
     min-height: 100%;
-    font-family: sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -40,7 +39,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -200,13 +199,55 @@ a {
 }
 
 .user-profile {
-    padding: 0 12px;
+    display: flex;
+    align-items: center;
 }
 
 
-.user-profile span{
-font-size: 80%;
+.user-profile span {
+    font-size: 13px;
     font-weight: 400;
+}
+
+.text-gray-600 {
+    color: #858796 !important
+}
+
+.text-drop-user {
+    font-size: 15px!important;
+}
+.text-drop-email {
+    font-size: 12px!important;
+    color: #A1A5B7;
+}
+.text-drop-logout {
+    font-size: 14px!important;
+    color: #7e8299
+}
+
+.role-drop {
+    color: #50CD89;
+    margin-top: 0.25rem;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    margin: 0;
+    padding: 13px 0;
+}
+
+.dropdown-menu .d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu .d-flex img {
+    width: 32px; /* Ajusta el tamaño según tu diseño */
+    height: 32px;
+}
+
+.drop-info{
+    padding: 0.65rem 1rem;
 }
 
 
@@ -217,9 +258,25 @@ font-size: 80%;
     margin-left: 10px;
 }
 
+.user-profile .img-profile {
+    width: 40px; /* Ajusta el tamaño según tu diseño */
+    height: 40px;
+}
+
 .dashboard-navbar .user-profile {
     font-weight: bold;
     font-size: 16px;
+}
+
+.icon-container {
+    font-size: 1.5rem; /* Ajusta el tamaño del icono según sea necesario */
+    color: #6c757d; /* Color del icono */
+    margin-right: 0.5rem; /* Espacio entre el icono y el texto */
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos para el título del módulo */
@@ -346,6 +403,7 @@ td {
     justify-content: space-between;
     align-items: center;
 }
+
 .container-fluid {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -383,7 +441,7 @@ label {
     margin-right: 20px;
 }
 
-/*!* Ajustes para pantallas pequeñas *!*/
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 767px) {
     .form .form-row .col-md-6 {
         flex-basis: 100%;

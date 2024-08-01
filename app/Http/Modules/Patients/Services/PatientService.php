@@ -31,7 +31,7 @@ class PatientService
      */
     public function create(SavePatientRequest $request): Patient
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         return $this->patient_repository->create($data);
     }
@@ -50,6 +50,19 @@ class PatientService
         return $patient;
     }
 
-
+    /**
+     * Elimina un paciente específico.
+     *
+     * @param int $id ID del paciente a eliminar.
+     *
+     * @return void
+     */
+    public function delete(int $id): void
+    {
+        $patient = $this->patient_repository->findById($id);
+        if ($patient) {
+            $patient->delete();
+        }
+    }
 }
 

@@ -13,7 +13,7 @@ class Doctor extends Model
         'identification',
         'name',
         'last_name',
-        'date_of_birth',
+        'birth_date',
         'address',
         'telephone',
         'especialidad',

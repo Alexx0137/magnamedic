@@ -36,7 +36,7 @@ class SaveUserRequest extends FormRequest
             'name'                   => 'required|max:255',
             'last_name'              => 'required|max:255',
             'email'                  => 'required|email|unique:users,email,' . $id,
-            'password'               => 'nullable|min:8|confirmed',
+            'password'               => 'nullable|min:5|confirmed',
             'role_id'                => 'required',
             'state'                  => 'required',
         ];

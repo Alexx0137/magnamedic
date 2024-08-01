@@ -3,6 +3,9 @@
 namespace App\Http\Modules\Patients\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Modules\BloodTypes\Models\BloodType;
+use App\Http\Modules\Genders\Models\Gender;
+use App\Http\Modules\IdentificationTypes\Models\IdentificationType;
 use App\Http\Modules\Patients\Models\Patient;
 use App\Http\Modules\Patients\Repositories\PatientRepository;
 use App\Http\Modules\Patients\Requests\SavePatientRequest;
@@ -43,7 +46,7 @@ class PatientController extends Controller
     {
         $patients = $this->patient_repository->findAll($request);
 
-        return view('patients.index', ['patients' => $patients]);
+        return view('patients.index', compact('patients'));
     }
 
 
@@ -55,7 +58,10 @@ class PatientController extends Controller
      */
     public function create(): View
     {
-        return view('patients.form');
+        $identificationTypes = IdentificationType::all();
+        $bloodTypes = BloodType::all();
+        $genders = Gender::all();
+        return view('patients.create', compact('identificationTypes','bloodTypes', 'genders'));
     }
 
     /**
@@ -69,7 +75,8 @@ class PatientController extends Controller
     {
         $this->patient_service->create($request);
 
-        return redirect()->route('patients')->with('success', 'Paciente creado exitosamente');
+        return redirect()->route('patients')
+            ->with('success', 'Paciente creado exitosamente');
     }
 
     public function show(Patient $patient)
@@ -88,10 +95,13 @@ class PatientController extends Controller
         $patient = $this->patient_repository->findById($id);
 
         if (!$patient) {
-            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
+            return redirect()->route('patients.index')
+                ->with('error', 'Paciente no encontrado.');
         }
-
-        return view('patients.form', ['patient' => $patient]);
+        $identificationTypes = IdentificationType::all();
+        $bloodTypes = BloodType::all();
+        $genders = Gender::all();
+        return view('patients.edit', compact('patient','identificationTypes','bloodTypes', 'genders'));
     }
 
 
@@ -108,7 +118,8 @@ class PatientController extends Controller
         $attributes = $request->validated();
         $this->patient_service->update($attributes, $id);
 
-        return redirect()->route('patients')->with('success', 'Paciente actualizado exitosamente.');
+        return redirect()->route('patients')
+            ->with('success', 'Paciente actualizado exitosamente.');
     }
 
     /**
@@ -122,11 +133,13 @@ class PatientController extends Controller
         $patient = $this->patient_repository->findById($id);
 
         if (!$patient) {
-            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
+            return redirect()->route('patients.index')
+                ->with('error', 'Paciente no encontrado.');
         }
 
         $patient->delete();
 
-        return redirect()->route('patients')->with('success', 'Paciente eliminado exitosamente.');
+        return redirect()->route('patients')
+            ->with('success', 'Paciente eliminado exitosamente.');
     }
 }
