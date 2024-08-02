@@ -11,6 +11,7 @@ use App\Http\Modules\Patients\Repositories\PatientRepository;
 use App\Http\Modules\Patients\Requests\SavePatientRequest;
 use App\Http\Modules\Patients\Services\PatientService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -142,4 +143,28 @@ class PatientController extends Controller
         return redirect()->route('patients')
             ->with('success', 'Paciente eliminado exitosamente.');
     }
+
+
+    // PatientController.php
+    // app/Http/Controllers/PatientController.php
+    public function search(Request $request): JsonResponse
+    {
+
+
+        $term = $request->query('term');
+        $patients = Patient::where('name', 'LIKE', "%{$term}%")
+            ->orWhere('identification', 'LIKE', "%{$term}%")
+            ->get()
+            ->map(function($patient) {
+                return [
+                    'value' => $patient->id,
+                    'label' => $patient->name . ' ' . $patient->last_name . ' - ' . $patient->identification,
+                ];
+            });
+
+        return response()->json($patients);
+    }
+
+
+
 }

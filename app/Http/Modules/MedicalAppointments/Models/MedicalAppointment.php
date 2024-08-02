@@ -47,6 +47,7 @@ class MedicalAppointment extends Model
 
     public function appointmentStates(): BelongsTo
     {
-        return $this->belongsTo(AppointmentState::class, 'medical_speciality_id');
+        return $this->belongsTo(AppointmentState::class, 'appointment_state_id');
     }
+
 }

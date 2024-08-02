@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            <div class="search-container">
+            <div class="search-container mb-3">
                 <input type="text" class="search-input" placeholder="Buscar...">
                 <button class="search-button">Buscar</button>
             </div>
@@ -37,11 +37,21 @@
                         <tr>
                             <td>{{ $appointment->date }}</td>
                             <td>{{ $appointment->time }}</td>
-                            <td>{{ $appointment->patient->name }}</td>
-                            <td>{{ $appointment->medicalSpecialities->name }}</td>
-                            <td>{{ $appointment->doctor->name }}</td>
-                            <td>{{ $appointment->medicalSpecialities->consulting_room }}</td>
-                            <td>{{ $appointment->appointmentStates->name }}</td>
+                            <td>{{ $appointment->patient->name ?? 'No disponible' }}</td>
+                            <td>{{ $appointment->medicalSpecialities->name ?? 'No disponible' }}</td>
+                            <td>{{ $appointment->doctor->name ?? 'No disponible' }}</td>
+                            <td>{{ $appointment->medicalSpecialities->consulting_room ?? 'No disponible' }}</td>
+                            <td>
+                                <span class="
+                                    @if($appointment->appointmentStates->code == '100') badge-light-warning
+                                    @elseif($appointment->appointmentStates->code == '200') badge-light-danger
+                                    @elseif($appointment->appointmentStates->code == '300') badge-light-success
+                                    @elseif($appointment->appointmentStates->code == '400') badge-light-warning
+                                    @endif
+                                ">
+                                    {{ $appointment->appointmentStates->name }}
+                                </span>
+                            </td>
                             <td>
                                 <a href="{{ route('medical-appointments.edit', $appointment->id) }}"
                                    class="icon-color btn btn-bg-light btn-sm btn-active-color-primary me-3"
@@ -52,7 +62,7 @@
                                       method="POST"
                                       style="display:inline;"
                                       class="delete-form"
-                                      data-name="{{ $appointment->patient->name }}">
+                                      data-name="{{ $appointment->patient->name ?? 'Paciente' }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -64,44 +74,44 @@
                             </td>
                         </tr>
                     @endforeach
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            document.querySelectorAll('.delete-form').forEach(function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    event.preventDefault();
-
-                                    const specialityName = form.getAttribute('data-name');
-
-                                    Swal.fire({
-                                        title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar la cita médica de "${specialityName}"?`,
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Sí, eliminar',
-                                        cancelButtonText: 'Cancelar'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            form.submit();
-                                        }
-                                    });
-                                });
-                            });
-
-                            @if(session('success'))
-                            toastr.success("{{ session('success') }}", 'Éxito', {
-                                "positionClass": "toast-top-right",
-                                "timeOut": "5000"
-                            });
-                            @endif
-                        });
-                    </script>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.delete-form').forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const specialityName = form.getAttribute('data-name');
+
+                    Swal.fire({
+                        title: '¿Eliminar?',
+                        text: `¡Estás seguro de eliminar la cita médica de "${specialityName}"?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, eliminar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+
+            @if(session('success'))
+            toastr.success("{{ session('success') }}", 'Éxito', {
+                "positionClass": "toast-top-right",
+                "timeOut": "5000"
+            });
+            @endif
+        });
+    </script>
+
 @endsection

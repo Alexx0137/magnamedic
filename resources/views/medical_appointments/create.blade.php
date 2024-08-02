@@ -1,3 +1,4 @@
+<!-- resources/views/appointments/create.blade.php -->
 @extends('layout.layout')
 
 @section('content')
@@ -101,7 +102,7 @@
 
             patientSearchInput.addEventListener('input', function() {
                 const query = this.value;
-                if (query.length >= 2) {
+                if (query.length >= 1) {
                     fetch(`{{ route('patients.search') }}?term=${query}`)
                         .then(response => response.json())
                         .then(data => {

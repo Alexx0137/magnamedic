@@ -10,15 +10,32 @@ class DashboardController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
+        // Contar el total de citas
         $totalAppointments = MedicalAppointment::count();
-        $attendedAppointments = MedicalAppointment::where('appointment_state_id', 1)->count(); // Estado 1 = Atendido
-        $pendingAppointments = MedicalAppointment::where('appointment_state_id', 2)->count(); // Estado 2 = Pendiente
-        $canceledAppointments = MedicalAppointment::where('appointment_state_id', 3)->count(); // Estado 3 = Cancelado
 
-        $attendedPercentage = $totalAppointments > 0 ? ($attendedAppointments / $totalAppointments) * 100 : 0;
-        $pendingPercentage = $totalAppointments > 0 ? ($pendingAppointments / $totalAppointments) * 100 : 0;
+        // Contar citas por estado
+        $programmedAppointments = MedicalAppointment::where('appointment_state_id', 1)->count();
+        $canceledAppointments = MedicalAppointment::where('appointment_state_id', 2)->count();
+        $completedAppointments = MedicalAppointment::where('appointment_state_id', 3)->count();
+        $missedAppointments = MedicalAppointment::where('appointment_state_id', 4)->count();
+
+        // Calcular porcentajes
+        $programmedPercentage = $totalAppointments > 0 ? ($programmedAppointments / $totalAppointments) * 100 : 0;
         $canceledPercentage = $totalAppointments > 0 ? ($canceledAppointments / $totalAppointments) * 100 : 0;
+        $completedPercentage = $totalAppointments > 0 ? ($completedAppointments / $totalAppointments) * 100 : 0;
+        $missedPercentage = $totalAppointments > 0 ? ($missedAppointments / $totalAppointments) * 100 : 0;
 
-        return view('dashboard', compact('totalAppointments', 'attendedAppointments', 'pendingAppointments', 'canceledAppointments', 'attendedPercentage', 'pendingPercentage', 'canceledPercentage'));
+        // Pasar los datos a la vista
+        return view('dashboard', compact(
+            'totalAppointments',
+            'programmedAppointments',
+            'canceledAppointments',
+            'completedAppointments',
+            'missedAppointments',
+            'programmedPercentage',
+            'canceledPercentage',
+            'completedPercentage',
+            'missedPercentage'
+        ));
     }
 }
