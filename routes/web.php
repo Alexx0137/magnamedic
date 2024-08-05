@@ -54,7 +54,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/patients/form/{id}', 'edit')->name('patients.edit');
         Route::put('/patients/form/{id}', 'update')->name('patients.update');
         Route::delete('/patients/{id}', 'destroy')->name('patients.destroy');
-        // routes/web.php
         Route::get('/patients/search', [PatientController::class, 'search'])->name('patients.search');
 
 
@@ -89,14 +88,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/medical-appointments/form/{id}', 'edit')->name('medical-appointments.edit');
         Route::put('/medical-appointments/form/{id}', 'update')->name('medical-appointments.update');
         Route::delete('/medical-appointments/{id}', 'destroy')->name('medical-appointments.destroy');
-//        Route::get('/patients/search', [MedicalAppointmentController::class, 'searchPatients'])->name('patients.search');
+        //Route::get('/patients/search', [MedicalAppointmentController::class, 'searchPatients'])->name('patients.search');
 
 
     });
+
     Route::get('/reports', [ReportController::class, 'index'])->name('reports');
 
-//    // Reports
-//    Route::get('/reports', function () {
-//        return view('reports.index');
-//    })->name('reports');
 });

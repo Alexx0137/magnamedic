@@ -30,7 +30,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \App\Http\Middleware\ShareUserData::class,
+//            \App\Http\Middleware\ShareUserData::class,
             \App\Http\Middleware\ShareAuthenticatedUser::class,
             \App\Http\Middleware\NoCache::class,
             \App\Http\Middleware\EncryptCookies::class,

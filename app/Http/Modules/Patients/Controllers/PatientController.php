@@ -17,10 +17,8 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-
     private PatientService $patient_service;
     private PatientRepository $patient_repository;
-
 
     /**
      * Método constructor.

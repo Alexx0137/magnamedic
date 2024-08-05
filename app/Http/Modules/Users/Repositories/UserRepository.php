@@ -4,6 +4,9 @@ namespace App\Http\Modules\Users\Repositories;
 
 use App\Http\Modules\Users\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class UserRepository
@@ -42,9 +45,9 @@ class UserRepository
      * Obtener un usuario por su ID.
      *
      * @param int $id ID del usuario.
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Builder[]
+     * @return Builder|Collection|Model|Builder[]
      */
-    public function findById(int $id): \Illuminate\Database\Eloquent\Builder|array|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+    public function findById(int $id): Builder|array|Collection|Model
     {
         return $this->model
             ->with('role')

@@ -38,7 +38,7 @@ class User extends Authenticatable
     /**
      * Get the identification type associated with the user.
      */
-    public function identificationType()
+    public function identificationType(): BelongsTo
     {
         return $this->belongsTo(IdentificationType::class, 'identification_type_id');
     }

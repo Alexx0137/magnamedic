@@ -103,7 +103,7 @@
                                                     {{ strtoupper($user->name) }} {{ strtoupper($user->last_name) }}
                                                 </span>
                                                 <span class="role-drop badge-light-success mt-0">
-                                                    {{ $user->role_id }}
+                                                    {{ $user }}
 
                                                 </span>
                                                 <span class="text-drop-email">
