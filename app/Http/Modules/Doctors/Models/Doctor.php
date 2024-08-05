@@ -63,14 +63,6 @@ class Doctor extends Model
         return $this->belongsTo(MedicalSpeciality::class, 'medical_speciality_id');
     }
 
-    /**
-     * Relación con el modelo Appointment.
-     */
-    public function appointments()
-    {
-        return $this->hasMany(Appointment::class);
-    }
-
 
 
 }

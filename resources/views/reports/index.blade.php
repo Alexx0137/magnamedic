@@ -2,80 +2,93 @@
 
 @section('content')
 
-    <div class="title-container">
-        <h1>Reportes</h1>
-    </div>
+    <div class="card shadow mb-4">
 
-
-    <div class="row">
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs text-primary text-uppercase mb-1">
-                                Numero de citas
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">250</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
+        <div class="card-header py-3">
+            <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                <h1 class="h3 mb-0 text-gray-800">Reportes</h1>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs text-primary text-uppercase mb-1">
-                                Numero de pacientes
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">620</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs text-primary text-uppercase mb-1">
-                                Numero de medicos
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-doctor fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs text-primary text-uppercase mb-1">
-                                Numero de usuarios
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+        <div class="card-body">
+            <h2>Citas Médicas</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Especialidad</th>
+                    <th>Total Citas</th>
+                    <th>Citas Atendidas</th>
+                    <th>Citas Pendientes</th>
+                    <th>Citas Canceladas</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($reportData['medicalAppointments'] as $report)
+                    <tr>
+                        <td>{{ $report['speciality'] }}</td>
+                        <td>{{ $report['total'] }}</td>
+                        <td>{{ $report['attended'] }}</td>
+                        <td>{{ $report['pending'] }}</td>
+                        <td>{{ $report['cancelled'] }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            <h2>Pacientes</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Total Pacientes</th>
+                    <th>Activos</th>
+                    <th>Inactivos</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ $reportData['totalPatients'] }}</td>
+                    <td>{{ $reportData['activePatients'] }}</td>
+                    <td>{{ $reportData['inactivePatients'] }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>Médicos</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Total Médicos</th>
+                    <th>Activos</th>
+                    <th>Inactivos</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ $reportData['totalDoctors'] }}</td>
+                    <td>{{ $reportData['activeDoctors'] }}</td>
+                    <td>{{ $reportData['inactiveDoctors'] }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>Especialidades Médicas</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Especialidad</th>
+                    <th>Médicos</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($reportData['doctorsBySpeciality'] as $report)
+                    <tr>
+                        <td>{{ $report->name }}</td>
+                        <td>{{ $report->doctors_count }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 

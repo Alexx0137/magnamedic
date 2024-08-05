@@ -30,7 +30,7 @@ class MedicalAppointmentRepository
     public function findAll(Request $request): mixed
     {
         return $this->model
-            ->with(['medicalSpecialities', 'patient', 'appointmentStates', 'doctor'])
+            ->with(['medicalSpeciality', 'patient', 'appointmentStates', 'doctor'])
             ->where(function ($query) use ($request) {
                 $query->Where('date', 'like', '%' . $request->filter . '%')
                     ->orWhere('time', 'like', '%' . $request->filter . '%');

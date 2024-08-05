@@ -35,12 +35,8 @@ class MedicalAppointment extends Model
         return $this->belongsTo(Doctor::class);
     }
 
-//    public function speciality(): BelongsTo
-//    {
-//        return $this->belongsTo(MedicalSpeciality::class, 'medical_speciality_id');
-//    }
 
-    public function medicalSpecialities(): BelongsTo
+    public function medicalSpeciality(): BelongsTo
     {
         return $this->belongsTo(MedicalSpeciality::class, 'medical_speciality_id');
     }

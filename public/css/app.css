@@ -533,6 +533,10 @@ form.user .btn-user {
     border-left: .25rem solid #f6c23e !important
 }
 
+.border-left-danger {
+    border-left: .25rem solid #f63e3e !important
+}
+
 .text-gray-800 {
     color: #5a5c69 !important
 }
@@ -636,6 +640,11 @@ td {
 .badge-light-danger {
     color: #F1416C!important;
     background-color: #ffeaf2;
+}
+
+.badge-light-secondary {
+    color: #4179f1 !important;
+    background-color: #eaf2ff;
 }
 
 .bg-warning {

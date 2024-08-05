@@ -6,6 +6,7 @@ use App\Http\Modules\Doctors\Controllers\DoctorController;
 use App\Http\Modules\MedicalAppointments\Controllers\MedicalAppointmentController;
 use App\Http\Modules\MedicalSpecialities\Controllers\MedicalSpecialityController;
 use App\Http\Modules\Patients\Controllers\PatientController;
+use App\Http\Modules\Reports\Controllers\ReportController;
 use App\Http\Modules\users\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -92,10 +93,10 @@ Route::middleware('auth')->group(function () {
 
 
     });
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports');
 
-
-    // Reports
-    Route::get('/reports', function () {
-        return view('reports.index');
-    })->name('reports');
+//    // Reports
+//    Route::get('/reports', function () {
+//        return view('reports.index');
+//    })->name('reports');
 });

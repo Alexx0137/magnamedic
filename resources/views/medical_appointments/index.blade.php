@@ -38,15 +38,15 @@
                             <td>{{ $appointment->date }}</td>
                             <td>{{ $appointment->time }}</td>
                             <td>{{ $appointment->patient->name ?? 'No disponible' }}</td>
-                            <td>{{ $appointment->medicalSpecialities->name ?? 'No disponible' }}</td>
+                            <td>{{ $appointment->medicalSpeciality->name ?? 'No disponible' }}</td>
                             <td>{{ $appointment->doctor->name ?? 'No disponible' }}</td>
-                            <td>{{ $appointment->medicalSpecialities->consulting_room ?? 'No disponible' }}</td>
+                            <td>{{ $appointment->medicalSpeciality->consulting_room ?? 'No disponible' }}</td>
                             <td>
                                 <span class="
                                     @if($appointment->appointmentStates->code == '100') badge-light-warning
                                     @elseif($appointment->appointmentStates->code == '200') badge-light-danger
                                     @elseif($appointment->appointmentStates->code == '300') badge-light-success
-                                    @elseif($appointment->appointmentStates->code == '400') badge-light-warning
+                                    @elseif($appointment->appointmentStates->code == '400') badge-light-secondary
                                     @endif
                                 ">
                                     {{ $appointment->appointmentStates->name }}
@@ -62,7 +62,8 @@
                                       method="POST"
                                       style="display:inline;"
                                       class="delete-form"
-                                      data-name="{{ $appointment->patient->name ?? 'Paciente' }}">
+                                      data-name="{{ $appointment->patient->name ?? 'Paciente' }}"
+                                      data-last_name="{{ $appointment->patient->last_name ?? '' }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -86,11 +87,12 @@
                 form.addEventListener('submit', function (event) {
                     event.preventDefault();
 
-                    const specialityName = form.getAttribute('data-name');
+                    const patientName = form.getAttribute('data-name');
+                    const patientLastName = form.getAttribute('data-last_name');
 
                     Swal.fire({
                         title: '¿Eliminar?',
-                        text: `¡Estás seguro de eliminar la cita médica de "${specialityName}"?`,
+                        text: `¡Estás seguro de eliminar la cita médica de "${patientName} ${patientLastName}"?`,
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',

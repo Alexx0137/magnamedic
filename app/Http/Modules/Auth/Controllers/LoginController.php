@@ -4,27 +4,41 @@ namespace App\Http\Modules\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Modules\Auth\Requests\LoginRequest;
+use App\Http\Modules\Users\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function login(LoginRequest $request)
+    /**
+     * @throws ValidationException
+     */
+    public function login(LoginRequest $request): RedirectResponse
     {
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $request->session()->regenerate();
+        $user = User::where('email', $request->email)->first();
 
-            return redirect()
-                ->intended('dashboard')
-                ->with('status', 'You are logged in');
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                Auth::login($user);
+                $request->session()->regenerate();
+
+                return redirect()
+                    ->intended('dashboard')
+                    ->with('status', 'You are logged in');
+            }
+
+            throw ValidationException::withMessages([
+                'password' => 'La contraseña proporcionada es incorrecta.',
+            ]);
         }
 
         throw ValidationException::withMessages([
-            'email' => __('auth.failed'),
+            'email' => 'No se encontró ninguna cuenta con este correo electrónico.',
         ]);
     }
 

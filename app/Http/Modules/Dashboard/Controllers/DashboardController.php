@@ -10,32 +10,29 @@ class DashboardController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        // Contar el total de citas
-        $totalAppointments = MedicalAppointment::count();
-
         // Contar citas por estado
-        $programmedAppointments = MedicalAppointment::where('appointment_state_id', 1)->count();
-        $canceledAppointments = MedicalAppointment::where('appointment_state_id', 2)->count();
-        $completedAppointments = MedicalAppointment::where('appointment_state_id', 3)->count();
-        $missedAppointments = MedicalAppointment::where('appointment_state_id', 4)->count();
+        $totalAppointments = MedicalAppointment::count();
+        $totalAttended = MedicalAppointment::where('appointment_state_id', 3)->count();
+        $totalPending = MedicalAppointment::where('appointment_state_id', 1)->count();
+        $totalCanceled = MedicalAppointment::where('appointment_state_id', 2)->count();
+        $totalMissed = MedicalAppointment::where('appointment_state_id', 4)->count();
 
-        // Calcular porcentajes
-        $programmedPercentage = $totalAppointments > 0 ? ($programmedAppointments / $totalAppointments) * 100 : 0;
-        $canceledPercentage = $totalAppointments > 0 ? ($canceledAppointments / $totalAppointments) * 100 : 0;
-        $completedPercentage = $totalAppointments > 0 ? ($completedAppointments / $totalAppointments) * 100 : 0;
-        $missedPercentage = $totalAppointments > 0 ? ($missedAppointments / $totalAppointments) * 100 : 0;
+        // Calcular porcentajes para las barras de progreso
+        $attendedPercentage = $totalAppointments ? ($totalAttended / $totalAppointments) * 100 : 0;
+        $pendingPercentage = $totalAppointments ? ($totalPending / $totalAppointments) * 100 : 0;
+        $canceledPercentage = $totalAppointments ? ($totalCanceled / $totalAppointments) * 100 : 0;
+        $missedPercentage = $totalAppointments ? ($totalMissed / $totalAppointments) * 100 : 0;
 
-        // Pasar los datos a la vista
-        return view('dashboard', compact(
-            'totalAppointments',
-            'programmedAppointments',
-            'canceledAppointments',
-            'completedAppointments',
-            'missedAppointments',
-            'programmedPercentage',
-            'canceledPercentage',
-            'completedPercentage',
-            'missedPercentage'
-        ));
+        return view('dashboard', [
+            'totalAppointments' => $totalAppointments,
+            'totalAttended' => $totalAttended,
+            'totalPending' => $totalPending,
+            'totalCanceled' => $totalCanceled,
+            'totalMissed' => $totalMissed,
+            'attendedPercentage' => $attendedPercentage,
+            'pendingPercentage' => $pendingPercentage,
+            'canceledPercentage' => $canceledPercentage,
+            'missedPercentage' => $missedPercentage,
+        ]);
     }
 }

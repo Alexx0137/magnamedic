@@ -32,9 +32,9 @@
         </div>
         <ul>
             <hr>
-            <li class="{{ request()->is('/') ? 'active' : '' }}">
+            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-home"></i>
-                <a href="/dashboard"><span>Inicio</span></a>
+                <a href="dashboard"><span>Inicio</span></a>
             </li>
             <hr>
 
@@ -58,7 +58,7 @@
             </li>
             <hr>
 
-            <li class="{{ request()->is('reportes*') ? 'active' : '' }}">
+            <li class="{{ request()->is('reports*') ? 'active' : '' }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <a href="{{ route('reports') }}"><span>Reportes</span></a>
             </li>

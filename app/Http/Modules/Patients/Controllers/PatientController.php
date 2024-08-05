@@ -144,9 +144,6 @@ class PatientController extends Controller
             ->with('success', 'Paciente eliminado exitosamente.');
     }
 
-
-    // PatientController.php
-    // app/Http/Controllers/PatientController.php
     public function search(Request $request): JsonResponse
     {
 

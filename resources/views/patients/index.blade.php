@@ -14,16 +14,13 @@
         </div>
 
         <div class="card-body">
-
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <button class="search-button">Buscar</button>
+            <div class="search-container mb-3">
+                <input type="text" id="search" class="search-input" placeholder="Buscar..." aria-label="Buscar...">
             </div>
             <div class="table-responsive">
                 <table class="styled-table">
                     <thead>
                     <tr>
-
                         <th>Documento</th>
                         <th>Nombre</th>
                         <th>Teléfono</th>
@@ -32,17 +29,17 @@
                         <th>Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="patients-table-body">
                     @foreach ($patients as $patient)
-                        <tr>
+                        <tr class="patient-row">
                             <td>{{ $patient->identification }}</td>
                             <td>{{ $patient->name }} {{ $patient->last_name }}</td>
                             <td>{{ $patient->telephone }}</td>
                             <td>{{ $patient->email }}</td>
                             <td>
-                                <span class="{{ $patient->state == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
-                                    {{ $patient->state == 1 ? 'Activo' : 'Inactivo' }}
-                                </span>
+                            <span class="{{ $patient->state == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
+                                {{ $patient->state == 1 ? 'Activo' : 'Inactivo' }}
+                            </span>
                             </td>
                             <td>
                                 <a href="{{ route('patients.edit', $patient->id) }}"
@@ -67,47 +64,47 @@
                             </td>
                         </tr>
                     @endforeach
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            document.querySelectorAll('.delete-form').forEach(function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    event.preventDefault();
-
-                                    const patientName = form.getAttribute('data-name');
-                                    const patientLastName = form.getAttribute('data-last_name');
-
-                                    Swal.fire({
-                                        title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar al paciente "${patientName} ${patientLastName}"?`,
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Sí, eliminar',
-                                        cancelButtonText: 'Cancelar'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            form.submit();
-                                        }
-                                    });
-                                });
-                            });
-
-                            @if(session('success'))
-                            toastr.success("{{ session('success') }}", 'Éxito', {
-                                "positionClass": "toast-top-right",
-                                "timeOut": "5000"
-                            });
-                            @endif
-                        });
-
-                    </script>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search');
+            const tableBody = document.getElementById('patients-table-body');
+            const rows = tableBody.getElementsByClassName('patient-row');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                for (const row of rows) {
+                    const cells = row.getElementsByTagName('td');
+                    let rowContainsSearchTerm = false;
+
+                    for (const cell of cells) {
+                        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                            rowContainsSearchTerm = true;
+                            break;
+                        }
+                    }
+
+                    if (rowContainsSearchTerm) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+
+            @if(session('success'))
+            toastr.success("{{ session('success') }}", 'Éxito', {
+                "positionClass": "toast-top-right",
+                "timeOut": "5000"
+            });
+            @endif
+        });
+    </script>
 
 @endsection

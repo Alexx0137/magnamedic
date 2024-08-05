@@ -36,31 +36,44 @@
                                         </div>
                                         <h1 class="h4 text-gray-800 mb-0"><strong>Iniciar sesión</strong></h1>
                                     </div>
-                                    <form method="POST">
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+                                    <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="email"></label>
+                                            <label for="email">Correo</label>
                                             <input type="email"
                                                    value="{{ old('email' ) }}"
-                                                   class="form-control form-control-user"
+                                                   class="form-control form-control-user @error('email') is-invalid @enderror"
                                                    id="email"
                                                    name="email"
                                                    placeholder="Correo"
                                                    required
                                                    autofocus
                                             >
-                                            @error('email') {{ $message }} @enderror
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="password"></label>
+                                            <label for="password">Contraseña</label>
                                             <input type="password"
-                                                   class="form-control form-control-user"
+                                                   class="form-control form-control-user @error('password') is-invalid @enderror"
                                                    id="password"
                                                    name="password"
                                                    placeholder="Contraseña"
                                                    required
                                             >
-                                            @error('password') {{ $message }} @enderror
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="text-center">
                                             <button type="submit"
