@@ -3,6 +3,8 @@
 namespace App\Http\Modules\Users\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Modules\IdentificationTypes\Models\IdentificationType;
+use App\Http\Modules\Roles\Models\Role;
 use App\Http\Modules\Users\Requests\SaveUserRequest;
 use App\Http\Modules\Users\Services\UserService;
 use App\Http\Modules\Users\Repositories\UserRepository;
@@ -34,7 +36,6 @@ class UserController extends Controller
      *
      * @param Request $request Instancia de la solicitud HTTP.
      * @return View Vista que contiene la lista de usuarios.
-     * @throws Exception
      * @author Nelson García
      */
     public function index(Request $request): View
@@ -52,7 +53,9 @@ class UserController extends Controller
      */
     public function create(): View
     {
-        return view('users.create');
+        $identificationTypes = IdentificationType::all();
+        $roles = Role::all();
+        return view('users.create', compact('identificationTypes', 'roles'));
     }
 
     /**
@@ -66,6 +69,7 @@ class UserController extends Controller
     public function store(SaveUserRequest $request): RedirectResponse
     {
         $this->user_service->create($request);
+
         return redirect()->route('users')
             ->with('success', 'Usuario creado exitosamente');
     }
@@ -78,9 +82,11 @@ class UserController extends Controller
      */
     public function edit(int $id): View
     {
-        $editingUser = $this->user_repository->findById($id);
+        $user = $this->user_repository->findById($id);
+        $identificationTypes = IdentificationType::all();
+        $roles = Role::all();
 
-        return view('users.edit', compact('editingUser'));
+        return view('users.edit', compact('user', 'identificationTypes', 'roles'));
     }
 
     /**

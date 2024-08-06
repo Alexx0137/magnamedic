@@ -25,16 +25,14 @@
                         <label for="identification_type_id">Tipo de documento:</label>
                         <select id="identification_type_id" class="form-control" name="identification_type_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
-                            <option value="1">Cédula de ciudadanía</option>
-                            <option value="2">Pasaporte</option>
-                            <option value="3">RUT</option>
-                            <option value="4">Cédula de extranjería</option>
+                            @foreach($identificationTypes as $identificationType)
+                                <option value="{{ $identificationType->id }}">{{ $identificationType->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="identification">Número de documento:</label>
-                        <input type="text" id="identification" class="form-control" name="identification" placeholder=""
-                               required>
+                        <input type="text" id="identification" class="form-control" name="identification" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -46,33 +44,32 @@
                         <label for="role_id">Rol del usuario:</label>
                         <select id="role_id" class="form-control" name="role_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
-                            <option value="1">Administrador</option>
-                            <option value="2">Empleado</option>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="password">Contraseña:</label>
-                        <input type="password" id="password" class="form-control" name="password" placeholder=""
-                               required>
+                        <input type="password" id="password" class="form-control" name="password" placeholder="" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="password_confirmation">Confirmar contraseña:</label>
-                        <input type="password" id="password_confirmation" class="form-control"
-                               name="password_confirmation" placeholder="" required>
+                        <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-row mt-2">
                     <div class="form-group col-md-6">
                         <label>Estado:</label>
                         <div>
-                            <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="1">
+                            <label class="form-check-label" for="state_active">
+                                <input type="radio" id="state_active" name="state" class="form-check-input" value="1" checked>
                                 Activo
                             </label>
-                            <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="0">
+                            <label class="form-check-label" for="state_inactive">
+                                <input type="radio" id="state_inactive" name="state" class="form-check-input" value="0">
                                 Inactivo
                             </label>
                         </div>
@@ -81,9 +78,7 @@
 
                 <div class="form-row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1"
-                                onclick="window.location.href='{{ route('users') }}'"
-                        >
+                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1" onclick="window.location.href='{{ route('users') }}'">
                             <i class="fas fa-fw fa-arrow-left"></i>
                             Cancelar
                         </button>

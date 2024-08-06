@@ -8,7 +8,7 @@
         <hr>
         <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
             <i class="fas fa-fw fa-home"></i>
-            <a href="dashboard"><span>Inicio</span></a>
+            <a href="/dashboard"><span>Inicio</span></a>
         </li>
         <hr>
 
