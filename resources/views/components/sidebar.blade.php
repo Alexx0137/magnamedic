@@ -32,13 +32,13 @@
         </li>
         <hr>
 
-        <li class="{{ request()->is('reports*') ? 'active' : '' }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <a href="{{ route('reports') }}"><span>Reportes</span></a>
-        </li>
         <li class="{{ request()->is('users*') ? 'active' : '' }}">
             <i class="fas fa-fw fa-users"></i>
             <a href="{{ route('users') }}"><span>Usuarios</span></a>
+        </li>
+        <li class="{{ request()->is('reports*') ? 'active' : '' }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <a href="{{ route('reports') }}"><span>Reportes</span></a>
         </li>
     </ul>
 </div>
