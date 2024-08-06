@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -66,9 +66,9 @@
 
 
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            document.querySelectorAll('.delete-form').forEach(function(form) {
-                                form.addEventListener('submit', function(event) {
+                        document.addEventListener('DOMContentLoaded', function () {
+                            document.querySelectorAll('.delete-form').forEach(function (form) {
+                                form.addEventListener('submit', function (event) {
                                     event.preventDefault();
 
                                     const userName = form.getAttribute('data-name');
@@ -101,8 +101,6 @@
                         });
 
                     </script>
-
-
 
                     </tbody>
                 </table>

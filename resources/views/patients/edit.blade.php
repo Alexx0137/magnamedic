@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -18,7 +18,7 @@
                             <option value="" disabled>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
                                 <option
-                                        value="{{ $identificationType->id }}" {{ $patient->identification_type_id == $identificationType->id ? 'selected' : '' }}>
+                                    value="{{ $identificationType->id }}" {{ $patient->identification_type_id == $identificationType->id ? 'selected' : '' }}>
                                     {{ $identificationType->name }}
                                 </option>
                             @endforeach
@@ -63,7 +63,7 @@
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($genders as $gender)
                                 <option
-                                        value="{{ $gender->id }}" {{ $patient->gender_id == $gender->id ? 'selected' : '' }}>
+                                    value="{{ $gender->id }}" {{ $patient->gender_id == $gender->id ? 'selected' : '' }}>
                                     {{ $gender->name }}
                                 </option>
                             @endforeach
@@ -74,7 +74,8 @@
                         <select name="blood_type_id" class="form-control" id="blood_type_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($bloodTypes as $bloodType)
-                                <option value="{{ $bloodType->id }}" {{ $patient->blood_type_id == $bloodType->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $bloodType->id }}" {{ $patient->blood_type_id == $bloodType->id ? 'selected' : '' }}>
                                     {{ $bloodType->name }}
                                 </option>
                             @endforeach
@@ -130,11 +131,13 @@
                         <label>Estado:</label>
                         <div>
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="1" {{ $patient->state == 1 ? 'checked' : '' }}>
+                                <input type="radio" name="state" class="form-check-input"
+                                       value="1" {{ $patient->state == 1 ? 'checked' : '' }}>
                                 Activo
                             </label>
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="0" {{ $patient->state == 0 ? 'checked' : '' }}>
+                                <input type="radio" name="state" class="form-check-input"
+                                       value="0" {{ $patient->state == 0 ? 'checked' : '' }}>
                                 Inactivo
                             </label>
                         </div>

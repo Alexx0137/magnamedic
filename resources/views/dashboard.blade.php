@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="card shadow mb-4">
@@ -26,7 +26,8 @@
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-primary" role="progressbar"
-                                             style="width: 100%" aria-valuenow="{{ $totalAppointments }}" aria-valuemin="0"
+                                             style="width: 100%" aria-valuenow="{{ $totalAppointments }}"
+                                             aria-valuemin="0"
                                              aria-valuemax="100"></div>
                                     </div>
                                 </div>

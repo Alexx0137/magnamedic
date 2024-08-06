@@ -13,14 +13,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     /**
      * @throws ValidationException
      */
     public function login(LoginRequest $request): RedirectResponse
     {
-        $user = User::where('email', $request->email)->first();
+//        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->with('role')->first();
 
         if ($user) {
             if (Hash::check($request->password, $user->password)) {

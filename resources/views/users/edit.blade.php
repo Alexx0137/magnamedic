@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -35,11 +35,20 @@
                     <div class="form-group col-md-6">
                         <label for="identification_type_id">Tipo de documento:</label>
                         <select name="identification_type_id" class="form-control" required>
-                            <option value="" disabled {{ !$editingUser->identification_type_id ? 'selected' : '' }}>Seleccione una opción</option>
-                            <option value="1" {{ $editingUser->identification_type_id == 1 ? 'selected' : '' }}>Cédula de ciudadanía</option>
-                            <option value="2" {{ $editingUser->identification_type_id == 2 ? 'selected' : '' }}>Pasaporte</option>
-                            <option value="3" {{ $editingUser->identification_type_id == 3 ? 'selected' : '' }}>RUT</option>
-                            <option value="4" {{ $editingUser->identification_type_id == 4 ? 'selected' : '' }}>Cédula de extranjería</option>
+                            <option value="" disabled {{ !$editingUser->identification_type_id ? 'selected' : '' }}>
+                                Seleccione una opción
+                            </option>
+                            <option value="1" {{ $editingUser->identification_type_id == 1 ? 'selected' : '' }}>Cédula
+                                de ciudadanía
+                            </option>
+                            <option value="2" {{ $editingUser->identification_type_id == 2 ? 'selected' : '' }}>
+                                Pasaporte
+                            </option>
+                            <option value="3" {{ $editingUser->identification_type_id == 3 ? 'selected' : '' }}>RUT
+                            </option>
+                            <option value="4" {{ $editingUser->identification_type_id == 4 ? 'selected' : '' }}>Cédula
+                                de extranjería
+                            </option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
@@ -65,7 +74,9 @@
                     <div class="form-group col-md-6">
                         <label for="role_id">Rol del usuario:</label>
                         <select name="role_id" class="form-control" required>
-                            <option value="" disabled {{ !$editingUser->role_id ? 'selected' : '' }}>Seleccione una opción</option>
+                            <option value="" disabled {{ !$editingUser->role_id ? 'selected' : '' }}>Seleccione una
+                                opción
+                            </option>
                             <option value="1" {{ $editingUser->role_id == 1 ? 'selected' : '' }}>Administrador</option>
                             <option value="2" {{ $editingUser->role_id == 2 ? 'selected' : '' }}>Médico</option>
                             <option value="2" {{ $editingUser->role_id == 3 ? 'selected' : '' }}>Recepcionista</option>
@@ -93,11 +104,13 @@
                         <label>Estado:</label>
                         <div>
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="1" {{ $editingUser->state == 1 ? 'checked' : '' }}>
+                                <input type="radio" name="state" class="form-check-input"
+                                       value="1" {{ $editingUser->state == 1 ? 'checked' : '' }}>
                                 Activo
                             </label>
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="0" {{ $editingUser->state == 0 ? 'checked' : '' }}>
+                                <input type="radio" name="state" class="form-check-input"
+                                       value="0" {{ $editingUser->state == 0 ? 'checked' : '' }}>
                                 Inactivo
                             </label>
                         </div>

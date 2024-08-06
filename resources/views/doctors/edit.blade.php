@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -17,7 +17,8 @@
                         <select name="identification_type_id" class="form-control" required>
                             <option value="" disabled>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
-                                <option value="{{ $identificationType->id }}" {{ $doctor->identification_type_id == $identificationType->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $identificationType->id }}" {{ $doctor->identification_type_id == $identificationType->id ? 'selected' : '' }}>
                                     {{ $identificationType->name }}
                                 </option>
                             @endforeach
@@ -67,7 +68,8 @@
                         >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($genders as $gender)
-                                <option value="{{ $gender->id }}" {{ $doctor->gender_id == $gender->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $gender->id }}" {{ $doctor->gender_id == $gender->id ? 'selected' : '' }}>
                                     {{ $gender->name }}
                                 </option>
                             @endforeach
@@ -136,7 +138,8 @@
                         <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($specialities as $speciality)
-                                <option value="{{ $speciality->id }}" {{ $doctor->medical_speciality_id == $speciality->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $speciality->id }}" {{ $doctor->medical_speciality_id == $speciality->id ? 'selected' : '' }}>
                                     {{ $speciality->name }}
                                 </option>
                             @endforeach
@@ -146,11 +149,13 @@
                         <label>Estado:</label>
                         <div class="mt-2">
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="1" {{ $doctor->state == 1 ? 'checked' : '' }}>
+                                <input type="radio" name="state" class="form-check-input"
+                                       value="1" {{ $doctor->state == 1 ? 'checked' : '' }}>
                                 Activo
                             </label>
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="0" {{ $doctor->state == 0 ? 'checked' : '' }}>
+                                <input type="radio" name="state" class="form-check-input"
+                                       value="0" {{ $doctor->state == 0 ? 'checked' : '' }}>
                                 Inactivo
                             </label>
                         </div>

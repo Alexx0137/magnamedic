@@ -12,6 +12,6 @@
 //    public function getUserData(): View
 //    {
 //        $user = Auth::user();
-//        return view('layout');
+//        return view('layouts');
 //    }
 //}

@@ -1,5 +1,5 @@
 <!-- resources/views/appointments/create.blade.php -->
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -15,7 +15,8 @@
                     <!-- Búsqueda del Paciente -->
                     <div class="col-md-6 mb-3">
                         <label for="patient_search">Buscar Paciente:</label>
-                        <input type="text" class="form-control" id="patient_search" placeholder="Buscar paciente por nombre o ID">
+                        <input type="text" class="form-control" id="patient_search"
+                               placeholder="Buscar paciente por nombre o ID">
                         <input type="hidden" id="patient_id" name="patient_id" required>
                         <ul id="patient_suggestions" class="list-group"></ul>
                     </div>
@@ -47,7 +48,8 @@
                         <select class="form-control" id="doctor_id" name="doctor_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($doctors as $doctor)
-                                <option value="{{ $doctor->id }}" data-speciality="{{ $doctor->medical_speciality_id }}">{{ $doctor->name }}</option>
+                                <option value="{{ $doctor->id }}"
+                                        data-speciality="{{ $doctor->medical_speciality_id }}">{{ $doctor->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -72,7 +74,8 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1" onclick="window.location.href='{{ route('medical-appointments') }}'">
+                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1"
+                                onclick="window.location.href='{{ route('medical-appointments') }}'">
                             <i class="fas fa-fw fa-arrow-left"></i> Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary btn-sm mt-2 mx-1">
@@ -100,7 +103,7 @@
             const patientIdInput = document.getElementById('patient_id');
             const patientSuggestions = document.getElementById('patient_suggestions');
 
-            patientSearchInput.addEventListener('input', function() {
+            patientSearchInput.addEventListener('input', function () {
                 const query = this.value;
                 if (query.length >= 1) {
                     fetch(`{{ route('patients.search') }}?term=${query}`)
@@ -111,7 +114,7 @@
                                 const li = document.createElement('li');
                                 li.textContent = item.label;
                                 li.classList.add('list-group-item');
-                                li.addEventListener('click', function() {
+                                li.addEventListener('click', function () {
                                     patientSearchInput.value = item.label;
                                     patientIdInput.value = item.value; // Aquí se establece el valor de patient_id
                                     patientSuggestions.innerHTML = '';
@@ -128,7 +131,7 @@
             const specialitySelect = document.getElementById('medical_speciality_id');
             const doctorSelect = document.getElementById('doctor_id');
 
-            specialitySelect.addEventListener('change', function() {
+            specialitySelect.addEventListener('change', function () {
                 const selectedSpeciality = this.value;
                 Array.from(doctorSelect.options).forEach(option => {
                     if (option.dataset.speciality === selectedSpeciality) {

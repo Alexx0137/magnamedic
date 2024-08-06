@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Modules\Auth\Controllers\LoginController;
+use App\Http\Modules\Auth\Controllers\AuthController;
 use App\Http\Modules\Dashboard\Controllers\DashboardController;
 use App\Http\Modules\Doctors\Controllers\DoctorController;
 use App\Http\Modules\MedicalAppointments\Controllers\MedicalAppointmentController;
@@ -32,19 +32,10 @@ Route::view('/dashboard', 'dashboard')->middleware('auth');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 
-Route::post('login', [LoginController::class, 'login']);
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-    // Users
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/users', 'index')->name('users');
-        Route::get('/users/form', 'create')->name('create-user');
-        Route::post('/users', 'store')->name('users.store');
-        Route::get('/users/form/{id}', 'edit')->name('users.edit');
-        Route::put('/users/form/{id}', 'update')->name('users.update');
-        Route::delete('/users/{id}', 'destroy')->name('users.destroy');
-    });
+Route::middleware(['auth', 'auth.user'])->group(function () {
 
     // Patients
     Route::controller(PatientController::class)->group(function () {
@@ -55,8 +46,6 @@ Route::middleware('auth')->group(function () {
         Route::put('/patients/form/{id}', 'update')->name('patients.update');
         Route::delete('/patients/{id}', 'destroy')->name('patients.destroy');
         Route::get('/patients/search', [PatientController::class, 'search'])->name('patients.search');
-
-
     });
 
     // Medical specialities
@@ -89,8 +78,16 @@ Route::middleware('auth')->group(function () {
         Route::put('/medical-appointments/form/{id}', 'update')->name('medical-appointments.update');
         Route::delete('/medical-appointments/{id}', 'destroy')->name('medical-appointments.destroy');
         //Route::get('/patients/search', [MedicalAppointmentController::class, 'searchPatients'])->name('patients.search');
+    });
 
-
+    // Users
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/users', 'index')->name('users');
+        Route::get('/users/form', 'create')->name('create-user');
+        Route::post('/users', 'store')->name('users.store');
+        Route::get('/users/form/{id}', 'edit')->name('users.edit');
+        Route::put('/users/form/{id}', 'update')->name('users.update');
+        Route::delete('/users/{id}', 'destroy')->name('users.destroy');
     });
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports');

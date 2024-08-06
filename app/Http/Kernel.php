@@ -30,8 +30,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-//            \App\Http\Middleware\ShareUserData::class,
-            \App\Http\Middleware\ShareAuthenticatedUser::class,
+//            \App\Http\Middleware\ShareAuthenticatedUser::class,
             \App\Http\Middleware\NoCache::class,
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -67,5 +66,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'auth.user' => \App\Http\Middleware\ShareAuthUser::class,
     ];
 }
