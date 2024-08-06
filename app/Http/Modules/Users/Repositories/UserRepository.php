@@ -28,9 +28,9 @@ class UserRepository
      * Listar los usuarios con filtros y paginación.
      *
      * @param Request $request Filtros.
-     * @return : mixed Users
+     * @return LengthAwarePaginator : mixed Users
      */
-    public function findAll(Request $request): mixed
+    public function findAll(Request $request): LengthAwarePaginator
     {
         return $this->model
             ->with('role')
@@ -45,12 +45,11 @@ class UserRepository
      * Obtener un usuario por su ID.
      *
      * @param int $id ID del usuario.
-     * @return Builder|Collection|Model|Builder[]
+     * @return User|null
      */
-    public function findById(int $id): Builder|array|Collection|Model
+    public function findById(int $id): ?User
     {
         return $this->model
-            ->with('role')
             ->find($id);
     }
 
