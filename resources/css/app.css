@@ -1,631 +1,674 @@
-/*!* Estilos globales *!*/
+/* Estilos globales */
 
-/*!* Importar Font Awesome *!*/
-/*@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
-/*root {*/
-/*    --blue: #4e73df;*/
-/*    --indigo: #6610f2;*/
-/*    --purple: #6f42c1;*/
-/*    --pink: #e83e8c;*/
-/*    --red: #e74a3b;*/
-/*    --orange: #fd7e14;*/
-/*    --yellow: #f6c23e;*/
-/*    --green: #1cc88a;*/
-/*    --teal: #20c9a6;*/
-/*    --cyan: #36b9cc;*/
-/*    --white: #fff;*/
-/*    --gray: #858796;*/
-/*    --gray-dark: #5a5c69;*/
-/*    --primary: #4e73df;*/
-/*    --secondary: #858796;*/
-/*    --success: #1cc88a;*/
-/*    --info: #36b9cc;*/
-/*    --warning: #f6c23e;*/
-/*    --danger: #e74a3b;*/
-/*    --light: #f8f9fc;*/
-/*    --dark: #5a5c69;*/
-/*    --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
-/*    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;*/
-/*}*/
+root {
+    --blue: #4e73df;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #e74a3b;
+    --orange: #fd7e14;
+    --yellow: #f6c23e;
+    --green: #1cc88a;
+    --teal: #20c9a6;
+    --cyan: #36b9cc;
+    --white: #fff;
+    --gray: #858796;
+    --gray-dark: #5a5c69;
+    --primary: #4e73df;
+    --secondary: #858796;
+    --success: #1cc88a;
+    --info: #36b9cc;
+    --warning: #f6c23e;
+    --danger: #e74a3b;
+    --light: #f8f9fc;
+    --dark: #5a5c69;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
-/*html {*/
-/*    position: relative;*/
-/*    min-height: 100%;*/
-/*    font-family: sans-serif;*/
-/*    line-height: 1.15;*/
-/*    -webkit-text-size-adjust: 100%;*/
-/*    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
-/*}*/
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
-/*body {*/
-/*    margin: 0;*/
-/*    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
-/*    font-size: 1rem;*/
-/*    font-weight: 400;*/
-/*    line-height: 1.5;*/
-/*    color: #858796;*/
-/*    text-align: left;*/
-/*    background-color: #fff;*/
-/*}*/
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #858796;
+    text-align: left;
+    background-color: #fff;
+}
 
-/*aside, footer, header, main, nav, section {*/
-/*    display: block;*/
-/*}*/
+aside, footer, header, main, nav, section {
+    display: block;
+}
 
 
-/*#wrapper {*/
-/*    display: flex;*/
-/*}*/
+#wrapper {
+    display: flex;
+}
 
-/*!* Estilos del sidebar *!*/
-/*.sidebar {*/
-/*    width: 15rem;*/
-/*    background-color: #5a5c69;*/
-/*    color: #fff;*/
-/*    padding: 0 15px;*/
-/*    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    margin-bottom: 0;*/
-/*    height: 100vh;*/
-/*    position: sticky;*/
-/*    top: 0;*/
-/*}*/
+/* Estilos del sidebar */
+.sidebar {
+    width: 15rem;
+    background-color: #5a5c69;
+    color: #fff;
+    padding: 0 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
 
-/*!* Estilos para el contenedor del logo en el sidebar *!*/
-/*.logo {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    justify-content: flex-start;*/
-/*    padding: 0;*/
-/*}*/
+/* Estilos para el contenedor del logo en el sidebar */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+}
 
-/*!* Estilos para la imagen del logo *!*/
-/*.logo img {*/
-/*    max-width: 100%;*/
-/*    height: auto;*/
-/*}*/
+/* Estilos para la imagen del logo */
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
 
-/*!* Estilos para la línea horizontal (hr) en el sidebar *!*/
-/*.logo hr {*/
-/*    border: none;*/
-/*    border-top: 1px solid #fff;*/
-/*    width: 100%;*/
-/*    margin: 10px 0;*/
-/*}*/
+/* Estilos para la línea horizontal (hr) en el sidebar */
+.logo hr {
+    border: none;
+    border-top: 1px solid #fff;
+    width: 100%;
+    margin: 10px 0;
+}
 
-/*!* Estilos para la lista de enlaces en el sidebar *!*/
-/*.sidebar ul {*/
-/*    list-style-type: none;*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*    align-items: flex-start;*/
-/*}*/
+/* Estilos para la lista de enlaces en el sidebar */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    align-items: flex-start;
+}
 
-/*.sidebar li {*/
-/*    list-style: none;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    margin: 20px 0;*/
-/*}*/
+.sidebar li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
 
-/*.sidebar li span {*/
-/*    color: #FFFFFFCC;*/
-/*    font-size: 0.85rem;*/
-/*    display: inline;*/
-/*    font-weight: 400;*/
-/*    padding-left: 6px;*/
-/*}*/
-
-
-/*.sidebar li span:hover {*/
-/*    color: #ffffff;*/
-/*}*/
-/*a {*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*.sidebar a {*/
-/*    text-decoration: none;*/
-/*    color: #fff;*/
-/*    font-weight: bold;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*!* Estilos para los iconos de FontAwesome en el sidebar *!*/
-/*.iconSidebar {*/
-/*    margin-right: 10px;*/
-/*    width: 20px;*/
-/*    height: 20px;*/
-/*}*/
+.sidebar li span {
+    color: #FFFFFFCC;
+    font-size: 0.85rem;
+    display: inline;
+    font-weight: 400;
+    padding-left: 6px;
+}
 
 
-/*#wrapper #content-wrapper {*/
-/*    background-color: #f8f9fc;*/
-/*    width: 100%;*/
-/*    overflow-x: hidden;*/
-/*}*/
+.sidebar li span:hover {
+    color: #ffffff;
+}
+a {
+    text-decoration: none;
+}
 
-/*#wrapper #content-wrapper #content {*/
-/*    flex: 1 0 auto;*/
-/*}*/
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
 
-/*#wrapper {*/
-/*    display: flex;*/
-/*}*/
-
-
-/*!* Estilos para el contenido principal *!*/
-/*.content {*/
-/*    flex: 1;*/
-/*    padding: 0;*/
-/*    background-color: #f6f4f9;*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    margin: 0;*/
-/*}*/
-
-/*#wrapper #content-wrapper {*/
-/*    background-color: #f8f9fc;*/
-/*    width: 100%;*/
-/*    overflow-x: hidden;*/
-/*}*/
-
-/*#wrapper #content-wrapper #content {*/
-/*    flex: 1 0 auto;*/
-/*}*/
+/* Estilos para los iconos de FontAwesome en el sidebar */
+.iconSidebar {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
 
 
-/*!* Estilos para el navbar del dashboard *!*/
-/*.dashboard-navbar {*/
-/*    background-color: #fff;*/
-/*    color: #858796;*/
-/*    padding: 20px 16px;*/
-/*    display: flex;*/
-/*    justify-content: flex-end;*/
-/*    align-items: center;*/
-/*    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;*/
-/*    max-width: 100%;*/
-/*    margin: 0;*/
-/*}*/
+#wrapper #content-wrapper {
+    background-color: #f8f9fc;
+    width: 100%;
+    overflow-x: hidden;
+}
 
-/*!* Estilos para el contenedor de la imagen de usuario y el nombre en el navbar *!*/
-/*.dashboard-navbar  {*/
-/*    margin-bottom: 24px;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*}*/
+#wrapper #content-wrapper #content {
+    flex: 1 0 auto;
+}
 
-/*.user-profile {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*}*/
+#wrapper {
+    display: flex;
+}
 
 
-/*.user-profile span {*/
-/*    font-size: 13px;*/
-/*    font-weight: 400;*/
-/*}*/
+/* Estilos para el contenido principal */
+.content {
+    flex: 1;
+    padding: 0;
+    background-color: #f6f4f9;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
 
-/*.text-gray-600 {*/
-/*    color: #858796 !important*/
-/*}*/
+#wrapper #content-wrapper {
+    background-color: #f8f9fc;
+    width: 100%;
+    overflow-x: hidden;
+}
 
-/*.text-drop-user {*/
-/*    font-size: 15px!important;*/
-/*}*/
-/*.text-drop-email {*/
-/*    font-size: 12px!important;*/
-/*    color: #A1A5B7;*/
-/*}*/
-/*.text-drop-logout {*/
-/*    font-size: 14px!important;*/
-/*    color: #7e8299*/
-/*}*/
-
-
-/*.dashboard-navbar .user-profile img {*/
-/*    width: 30px;*/
-/*    height: 30px;*/
-/*    border-radius: 50%;*/
-/*    margin-left: 10px;*/
-/*}*/
-
-/*.user-profile .img-profile {*/
-/*    width: 40px; !* Ajusta el tamaño según tu diseño *!*/
-/*    height: 40px;*/
-/*}*/
-
-/*.dashboard-navbar .user-profile {*/
-/*    font-weight: bold;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*!* Estilos para el título del módulo *!*/
-/*h2 {*/
-/*    font-size: 20px;*/
-/*    color: #4e73df;*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.card {*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    min-width: 0;*/
-/*    word-wrap: break-word;*/
-/*    background-color: #fff;*/
-/*    background-clip: border-box;*/
-/*    border: 1px solid #e3e6f0;*/
-/*    border-radius: 0.35rem;*/
-/*}*/
-
-/*footer {*/
-/*    padding: 2rem 0;*/
-/*    flex-shrink: 0;*/
-/*    text-align: center;*/
-/*    line-height: 1;*/
-/*    font-size: 0.8rem;*/
-/*    width: 100%;*/
-/*    bottom: 0;*/
-/*}*/
+#wrapper #content-wrapper #content {
+    flex: 1 0 auto;
+}
 
 
-/*!* Agrega estos estilos en tus estilos CSS *!*/
-/*.styled-table {*/
-/*    width: 100%;*/
-/*    margin: 0 auto;*/
-/*    border-collapse: collapse;*/
-/*}*/
+/* Estilos para el navbar del dashboard */
+.dashboard-navbar {
+    background-color: #fff;
+    color: #858796;
+    padding: 20px 16px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    max-width: 100%;
+    margin: 0;
+}
 
-/*.styled-table th, .styled-table td {*/
-/*    border-top: 1px solid #e3e3e3;*/
-/*    border-bottom: 1px solid #e3e3e3;*/
-/*    padding: 8px;*/
-/*    text-align: center;*/
-/*}*/
+/* Estilos para el contenedor de la imagen de usuario y el nombre en el navbar */
+.dashboard-navbar  {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
 
-/*.styled-table th {*/
-/*    background-color: #ffff;*/
-/*    color: #1a202c;*/
-/*}*/
+.user-profile {
+    display: flex;
+    align-items: center;
+}
 
-/*.styled-table thead tr {*/
-/*    border-bottom: 3px solid #e3e3e3;*/
-/*}*/
 
-/*td {*/
-/*    color: #5a5c69;*/
-/*}*/
+.user-profile span {
+    font-size: 13px;
+    font-weight: 400;
+}
 
-/*!*.btn-sm {*!*/
-/*!*    padding: 0.25rem 0.5rem;*!*/
-/*!*    font-size: 0.75rem;*!*/
-/*!*    line-height: 1.5;*!*/
-/*!*    border-radius: 0.2rem;}*!*/
+.text-gray-600 {
+    color: #858796 !important
+}
 
-/*.btn-lg {*/
-/*    padding: 0.45rem 0.7rem;*/
+.text-drop-user {
+    font-size: 15px!important;
+}
+.text-drop-email {
+    font-size: 12px!important;
+    color: #A1A5B7;
+}
+.text-drop-logout {
+    font-size: 14px!important;
+    color: #7e8299
+}
+
+.role-drop {
+    color: #50CD89;
+    margin-top: 0.25rem;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    margin: 0;
+    padding: 13px 0;
+}
+
+.dropdown-menu .d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu .d-flex img {
+    width: 32px; /* Ajusta el tamaño según tu diseño */
+    height: 32px;
+}
+
+.drop-info{
+    padding: 0.65rem 1rem;
+}
+
+
+.dashboard-navbar .user-profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.user-profile .img-profile {
+    width: 40px; /* Ajusta el tamaño según tu diseño */
+    height: 40px;
+}
+
+.dashboard-navbar .user-profile {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.icon-container {
+    font-size: 1.5rem; /* Ajusta el tamaño del icono según sea necesario */
+    color: #6c757d; /* Color del icono */
+    margin-right: 0.5rem; /* Espacio entre el icono y el texto */
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para el título del módulo */
+h2 {
+    font-size: 20px;
+    color: #4e73df;
+    font-weight: bold;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+}
+
+footer {
+    padding: 2rem 0;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 0.8rem;
+    width: 100%;
+    bottom: 0;
+}
+
+
+/* Agrega estos estilos en tus estilos CSS */
+.styled-table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.styled-table th, .styled-table td {
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 8px;
+    text-align: center;
+}
+
+.styled-table th {
+    background-color: #ffff;
+    color: #1a202c;
+}
+
+.styled-table thead tr {
+    border-bottom: 3px solid #e3e3e3;
+}
+
+td {
+    color: #5a5c69;
+}
+
+/*.btn-sm {*/
+/*    padding: 0.25rem 0.5rem;*/
 /*    font-size: 0.75rem;*/
 /*    line-height: 1.5;*/
 /*    border-radius: 0.2rem;}*/
 
-/*!*.btn-primary {*!*/
-/*!*    color: #fff;*!*/
-/*!*    background-color: #4e73df;*!*/
-/*!*    border-color: #4e73df;*!*/
-/*!*}*!*/
-/*.btn-primary:hover {*/
-/*    background-color: #2980b9;*/
-/*}*/
-/*.btn-danger {*/
+.btn-lg {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;}
+
+/*.btn-primary {*/
 /*    color: #fff;*/
-/*    background-color: #d52a1a;*/
-/*    border-color: #d52a1a;*/
-/*}*/
-
-/*.btn-danger:hover {*/
-/*    color: #fff;*/
-/*    background-color: #e02d1b;*/
-/*    border-color: #e02d1b;*/
-/*}*/
-
-/*.btn-warning {*/
-/*    color: #ffff;*/
-/*    background-color: #ffc107;*/
-/*    border-color: #ffc107;*/
-/*}*/
-
-/*.btn-warning:hover {*/
-/*    color: #ffff;*/
-/*    background-color: #ffca2c;*/
-/*    border-color: #ffca2c;*/
-/*}*/
-
-/*.btn-success {*/
-/*    color: #fff;*/
-/*    background-color: #1cc88a;*/
-/*    border-color: #1cc88a;*/
-/*}*/
-
-/*.btn-success:hover {*/
-/*    color: #fff;*/
-/*    background-color: #17a673;*/
-/*    border-color: #17a673;*/
-/*}*/
-
-
-/*.shadow-sm {*/
-/*    box-shadow: 0 0.125rem 0.25rem 0 rgba(58, 59, 69, 0.2) !important;*/
-/*}*/
-/*!* Estilos para el contenedor del título y el botón *!*/
-/*.title-container {*/
-/*    margin-bottom: 10px;*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.container-fluid {*/
-/*    padding-left: 1.5rem;*/
-/*    padding-right: 1.5rem;*/
-/*}*/
-
-/*!* Estilos personalizados para los campos de entrada *!*/
-/*.form-control {*/
-/*    border: 1px solid #ccc;*/
-/*    padding: 8px;*/
-/*    width: 100%;*/
-/*    border-radius: 5px;*/
-/*}*/
-
-/*!* Estilos personalizados para las etiquetas *!*/
-/*label {*/
-/*    font-weight: bold;*/
-/*    color: #333;*/
-/*}*/
-
-/*!* Establecer un ancho máximo para el formulario *!*/
-/*.form {*/
-/*    max-width: 100%;*/
-/*}*/
-
-/*!* Estilos personalizados para el formulario *!*/
-/*.form .form-row {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: space-between;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*.form .form-row .col-md-6 {*/
-/*    flex-basis: calc(50% - 30px);*/
-/*    margin-right: 20px;*/
-/*}*/
-
-/*!*!* Ajustes para pantallas pequeñas *!*!*/
-/*@media (max-width: 767px) {*/
-/*    .form .form-row .col-md-6 {*/
-/*        flex-basis: 100%;*/
-/*        margin-right: 0;*/
-/*        margin-bottom: 10px;*/
-/*    }*/
-/*}*/
-
-
-/*!* Establecer un ancho máximo para los elementos select *!*/
-/*.form select {*/
-/*    max-width: 100%;*/
-/*}*/
-
-
-/*.col-md-6 {*/
-/*    flex: 0 0 50%;*/
-/*    max-width: 50%;*/
-/*}*/
-
-/*!* Estilos personalizados para hacer el "404" más grande *!*/
-/*.big-404 {*/
-/*    font-size: 100px;*/
-/*    font-weight: bold;*/
-/*    color: #5a5c69;*/
-/*}*/
-
-/*p {*/
-/*    font-size: 16px;*/
-/*    color: #858796;*/
-/*    margin-top: 0;*/
-/*    margin-bottom: 1rem;*/
-/*}*/
-
-/*.bg-gradient-primary {*/
 /*    background-color: #4e73df;*/
-/*    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);*/
-/*    background-size: cover;*/
+/*    border-color: #4e73df;*/
 /*}*/
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d52a1a;
+    border-color: #d52a1a;
+}
 
-/*form.user .form-control-user {*/
-/*    font-size: 0.8rem;*/
-/*    border-radius: 10rem;*/
-/*    padding: 0.75rem 1rem;*/
-/*}*/
+.btn-danger:hover {
+    color: #fff;
+    background-color: #e02d1b;
+    border-color: #e02d1b;
+}
 
-/*form.user .btn-user {*/
-/*    font-size: 0.8rem;*/
-/*    border-radius: 10rem;*/
-/*    padding: 0.75rem 1rem;*/
-/*}*/
+.btn-warning {
+    color: #ffff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
 
-/*.btn-block {*/
-/*    margin-top: 3rem;*/
-/*    display: block;*/
-/*    width: 100%;*/
-/*}*/
+.btn-warning:hover {
+    color: #ffff;
+    background-color: #ffca2c;
+    border-color: #ffca2c;
+}
 
-/*.o-hidden {*/
-/*    overflow: hidden !important;*/
-/*}*/
+.btn-success {
+    color: #fff;
+    background-color: #1cc88a;
+    border-color: #1cc88a;
+}
 
-/*.border-0 {*/
-/*    border: 0 !important;*/
-/*}*/
-
-/*.col-xl-3 {*/
-/*    flex: 0 0 25%;*/
-/*    max-width: 25%*/
-/*}*/
-
-/*.border-left-primary {*/
-/*    border-left: .25rem solid #4e73df !important*/
-/*}*/
-
-/*.border-left-secondary {*/
-/*    border-left: .25rem solid #858796 !important*/
-/*}*/
-
-/*.border-left-success {*/
-/*    border-left: .25rem solid #1cc88a !important*/
-/*}*/
-
-/*.border-left-info {*/
-/*    border-left: .25rem solid #36b9cc !important*/
-/*}*/
-
-/*.border-left-warning {*/
-/*    border-left: .25rem solid #f6c23e !important*/
-/*}*/
-
-/*.text-gray-800 {*/
-/*    color: #5a5c69 !important*/
-/*}*/
-
-/*.text-gray-300 {*/
-/*    color: #dddfeb !important*/
-/*}*/
-
-/*.text-xs {*/
-/*    font-size: .7rem*/
-/*}*/
-/*.font-weight-bold {*/
-/*    font-weight: 700 !important*/
-/*}*/
-/*.card-header {*/
-/*    padding: .75rem 1.25rem;*/
-/*    margin-bottom: 0;*/
-/*    background-color: #f8f9fc;*/
-/*    border-bottom: 1px solid #e3e6f0*/
-/*}*/
+.btn-success:hover {
+    color: #fff;
+    background-color: #17a673;
+    border-color: #17a673;
+}
 
 
-/*.styled-table thead tr {*/
-/*    border-bottom: 3px solid #e3e3e3;*/
-/*}*/
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(58, 59, 69, 0.2) !important;
+}
+/* Estilos para el contenedor del título y el botón */
+.title-container {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-/*td {*/
-/*    color: #5a5c69;*/
-/*}*/
+.container-fluid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
 
-/*.sidebar ul li.active span{*/
-/*    color: #ffff;*/
-/*    font-weight: bold !important;*/
-/*}*/
+/* Estilos personalizados para los campos de entrada */
+.form-control {
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+}
 
-/*.card-logo-container {*/
-/*    height: 100%;*/
-/*}*/
+/* Estilos personalizados para las etiquetas */
+label {
+    font-weight: bold;
+    color: #333;
+}
 
-/*.smaller-logo {*/
-/*    max-width: 180px;*/
-/*}*/
+/* Establecer un ancho máximo para el formulario */
+.form {
+    max-width: 100%;
+}
 
-/*.divider {*/
-/*    border-left: 1px solid #ababab;*/
-/*    height: 70px;*/
-/*    margin: 0 5px;*/
-/*}*/
+/* Estilos personalizados para el formulario */
+.form .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
 
-/*.form-login {*/
-/*    padding: 2rem;*/
-/*}*/
-/*.search-container {*/
-/*    display: flex;*/
-/*    justify-content: flex-start;*/
-/*    align-items: center;*/
-/*    margin: 5px 0 17px 0;*/
-/*}*/
+.form .form-row .col-md-6 {
+    flex-basis: calc(50% - 30px);
+    margin-right: 20px;
+}
 
-/*.search-input {*/
-/*    width: 300px;*/
-/*    padding: 5px;*/
-/*    border: 1px solid #ccc;*/
-/*    border-radius: 5px 0 0 5px;*/
-/*}*/
-
-/*.search-button {*/
-/*    padding: 5px 15px;*/
-/*    border: 1px solid #ccc;*/
-/*    border-radius: 0 5px 5px 0;*/
-/*    cursor: pointer;*/
-/*}*/
-/*.observations {*/
-/*    padding-right: 20px;*/
-/*}*/
-
-/*!*Botones de acciones*!*/
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 767px) {
+    .form .form-row .col-md-6 {
+        flex-basis: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
 
 
-/*.badge {*/
-/*    display: inline-block;*/
-/*    padding: 0.5em 0.85em;*/
-/*    font-size: 0.85rem;*/
-/*    font-weight: 600;*/
-/*    line-height: 1;*/
-/*    color: #ffffff;*/
-/*    text-align: center;*/
-/*    white-space: nowrap;*/
-/*    vertical-align: baseline;*/
-/*    border-radius: 0.475rem;*/
-/*}*/
+/* Establecer un ancho máximo para los elementos select */
+.form select {
+    max-width: 100%;
+}
 
-/*.badge-light-warning {*/
-/*    color: #f1da41 !important;*/
-/*    background-color: #fdfce7;*/
-/*}*/
-/*.badge-light-success {*/
-/*    color: #50CD89!important;*/
-/*    background-color: #E8FFF3;*/
-/*}*/
-/*.badge-light-danger {*/
-/*    color: #F1416C!important;*/
-/*    background-color: #ffeaf2;*/
-/*}*/
 
-/*.bg-warning {*/
-/*    color: #ffff !important;*/
-/*    background-color: rgba(255, 193, 7, 0.8) !important;*/
-/*}*/
-/*.bg-success{*/
-/*    color: #ffff!important;*/
-/*    background-color: rgba(80, 205, 137, 0.8) !important;*/
-/*}*/
-/*.bg-danger {*/
-/*    color: #ffff!important;*/
-/*    background-color: rgba(220, 53, 69, 0.8) !important;*/
-/*}*/
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
 
-/*.btn-bg-light{*/
-/*    background-color: #F5F8FA;*/
-/*}*/
-/*.btn-active-color-primary:hover {*/
-/*    color: #1f9ef8;*/
-/*}*/
-/*.btn-active-color-danger:hover {*/
-/*    color: #f4212e;*/
-/*}*/
+/* Estilos personalizados para hacer el "404" más grande */
+.big-404 {
+    font-size: 100px;
+    font-weight: bold;
+    color: #5a5c69;
+}
 
-/*.icon-color {*/
-/*    color: #7e7e7e;*/
-/*}*/
+p {
+    font-size: 16px;
+    color: #858796;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.bg-gradient-primary {
+    background-color: #4e73df;
+    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+    background-size: cover;
+}
+
+form.user .form-control-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.75rem 1rem;
+}
+
+form.user .btn-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.75rem 1rem;
+}
+
+.btn-block {
+    margin-top: 3rem;
+    display: block;
+    width: 100%;
+}
+
+.o-hidden {
+    overflow: hidden !important;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+
+.col-xl-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+}
+
+.border-left-primary {
+    border-left: .25rem solid #4e73df !important
+}
+
+.border-left-secondary {
+    border-left: .25rem solid #858796 !important
+}
+
+.border-left-success {
+    border-left: .25rem solid #1cc88a !important
+}
+
+.border-left-info {
+    border-left: .25rem solid #36b9cc !important
+}
+
+.border-left-warning {
+    border-left: .25rem solid #f6c23e !important
+}
+
+.border-left-danger {
+    border-left: .25rem solid #f63e3e !important
+}
+
+.text-gray-800 {
+    color: #5a5c69 !important
+}
+
+.text-gray-300 {
+    color: #dddfeb !important
+}
+
+.text-xs {
+    font-size: .7rem
+}
+.font-weight-bold {
+    font-weight: 700 !important
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0
+}
+
+
+.styled-table thead tr {
+    border-bottom: 3px solid #e3e3e3;
+}
+
+td {
+    color: #5a5c69;
+}
+
+.sidebar ul li.active span{
+    color: #ffff;
+    font-weight: bold !important;
+}
+
+.card-logo-container {
+    height: 100%;
+}
+
+.smaller-logo {
+    max-width: 180px;
+}
+
+.divider {
+    border-left: 1px solid #ababab;
+    height: 70px;
+    margin: 0 5px;
+}
+
+.form-login {
+    padding: 2rem;
+}
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px 0 17px 0;
+}
+
+.search-input {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.observations {
+    padding-right: 20px;
+}
+
+/*Botones de acciones*/
+
+
+.badge {
+    display: inline-block;
+    padding: 0.5em 0.85em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.475rem;
+}
+
+.badge-light-warning {
+    color: #f1da41 !important;
+    background-color: #fdfce7;
+}
+.badge-light-success {
+    color: #50CD89!important;
+    background-color: #E8FFF3;
+}
+.badge-light-danger {
+    color: #F1416C!important;
+    background-color: #ffeaf2;
+}
+
+.badge-light-secondary {
+    color: #4179f1 !important;
+    background-color: #eaf2ff;
+}
+
+.bg-warning {
+    color: #ffff !important;
+    background-color: rgba(255, 193, 7, 0.8) !important;
+}
+.bg-success{
+    color: #ffff!important;
+    background-color: rgba(80, 205, 137, 0.8) !important;
+}
+.bg-danger {
+    color: #ffff!important;
+    background-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+.btn-bg-light{
+    background-color: #F5F8FA;
+}
+.btn-active-color-primary:hover {
+    color: #1f9ef8;
+}
+.btn-active-color-danger:hover {
+    color: #f4212e;
+}
+
+.icon-color {
+    color: #7e7e7e;
+}
