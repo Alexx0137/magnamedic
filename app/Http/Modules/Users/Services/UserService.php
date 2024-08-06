@@ -51,7 +51,7 @@ class UserService
     {
         $user = $this->user_repository->findById($id);
 
-        if (isset($attributes['password']) && !empty($attributes['password'])) {
+        if (!empty($attributes['password'])) {
             $attributes['password'] = bcrypt($attributes['password']);
         } else {
             unset($attributes['password']);
