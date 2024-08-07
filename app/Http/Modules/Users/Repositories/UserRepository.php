@@ -4,9 +4,6 @@ namespace App\Http\Modules\Users\Repositories;
 
 use App\Http\Modules\Users\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class UserRepository
@@ -33,7 +30,6 @@ class UserRepository
     public function findAll(Request $request): LengthAwarePaginator
     {
         return $this->model
-            ->with('role')
             ->where(function ($query) use ($request) {
                 $query->Where('identification', 'like', '%' . $request->filter . '%')
                     ->orWhere('name', 'like', '%' . $request->filter . '%');
@@ -49,8 +45,7 @@ class UserRepository
      */
     public function findById(int $id): ?User
     {
-        return $this->model
-            ->find($id);
+        return $this->model->find($id);
     }
 
     /**

@@ -115,8 +115,15 @@ class UserController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        $this->user_service->delete($id);
+         $user = $this->user_repository->findById($id);
+
+         if (!$user) {
+             return redirect()->route('users.index')
+                 ->with('error', 'Usuario no encontrado.');
+         }
+         $user->delete();
+
         return redirect()->route('users')
-            ->with('success', 'Usuario eliminada con éxito.');
+            ->with('success', 'Usuario eliminada exitosamente.');
     }
 }

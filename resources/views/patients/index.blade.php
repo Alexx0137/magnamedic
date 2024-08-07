@@ -72,6 +72,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.delete-form').forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const userName = form.getAttribute('data-name');
+                    const userLastName = form.getAttribute('data-last_name');
+
+                    Swal.fire({
+                        title: '¿Eliminar?',
+                        text: `¡Estás seguro de eliminar el usuario "${userName} ${userLastName}"?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, eliminar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+
             const searchInput = document.getElementById('search');
             const tableBody = document.getElementById('patients-table-body');
             const rows = tableBody.getElementsByClassName('patient-row');

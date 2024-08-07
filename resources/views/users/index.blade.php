@@ -71,23 +71,23 @@
                                 form.addEventListener('submit', function (event) {
                                     event.preventDefault();
 
-                                    // const userName = form.getAttribute('data-name');
-                                    // const userLastName = form.getAttribute('data-last_name');
-                                    //
-                                    // Swal.fire({
-                                    //     title: '¿Eliminar?',
-                                    //     text: `¡Estás seguro de eliminar el usuario "${userName} ${userLastName}"?`,
-                                    //     icon: 'warning',
-                                    //     showCancelButton: true,
-                                    //     confirmButtonColor: '#3085d6',
-                                    //     cancelButtonColor: '#d33',
-                                    //     confirmButtonText: 'Sí, eliminar',
-                                    //     cancelButtonText: 'Cancelar'
-                                    // }).then((result) => {
-                                    //     if (result.isConfirmed) {
-                                    //         form.submit();
-                                    //     }
-                                    // });
+                                    const userName = form.getAttribute('data-name');
+                                    const userLastName = form.getAttribute('data-last_name');
+
+                                    Swal.fire({
+                                        title: '¿Eliminar?',
+                                        text: `¡Estás seguro de eliminar el usuario "${userName} ${userLastName}"?`,
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Sí, eliminar',
+                                        cancelButtonText: 'Cancelar'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            form.submit();
+                                        }
+                                    });
                                 });
                             });
 

@@ -49,7 +49,7 @@ class UserService
      */
     public function update(array $attributes, int $id): User
     {
-        $user = $this->user_repository->findById($id);
+        $user = User::findOrFail($id);
 
         if (!empty($attributes['password'])) {
             $attributes['password'] = bcrypt($attributes['password']);
