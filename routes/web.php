@@ -51,16 +51,6 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
 
     // Users
     Route::controller(UserController::class)->group(function () {
-        Route::get('/users', 'index')->name('users');
-        Route::get('/users/form', 'create')->name('create-user');
-        Route::post('/users', 'store')->name('users.store');
-        Route::get('/users/form/{id}', 'edit')->name('users.edit');
-        Route::put('/users/form/{id}', 'update')->name('users.update');
-        Route::delete('/users/{id}', 'destroy')->name('users.destroy');
-    });
-
-    // Usuarios
-    Route::controller(UsuarioController::class)->group(function () {
         Route::get('/usuarios', 'index')->name('usuarios');
         Route::get('/usuarios/form', 'create')->name('create-usuario');
         Route::post('/usuarios', 'store')->name('usuarios.store');
@@ -68,6 +58,16 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::put('/usuarios/form/{id}', 'update')->name('usuarios.update');
         Route::delete('/usuarios/{id}', 'destroy')->name('usuarios.destroy');
     });
+
+    // Usuarios
+//    Route::controller(UsuarioController::class)->group(function () {
+//        Route::get('/usuarios', 'index')->name('usuarios');
+//        Route::get('/usuarios/form', 'create')->name('create-usuario');
+//        Route::post('/usuarios', 'store')->name('usuarios.store');
+//        Route::get('/usuarios/form/{id}', 'edit')->name('usuarios.edit');
+//        Route::put('/usuarios/form/{id}', 'update')->name('usuarios.update');
+//        Route::delete('/usuarios/{id}', 'destroy')->name('usuarios.destroy');
+//    });
 
     // Medical specialities
     Route::controller(MedicalSpecialityController::class)->group(function () {

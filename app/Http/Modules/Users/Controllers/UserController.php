@@ -55,7 +55,7 @@ class UserController extends Controller
     {
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
-        return view('users.create', compact('identificationTypes', 'roles'));
+        return view('usuarios.create', compact('identificationTypes', 'roles'));
     }
 
     /**
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $this->user_service->create($request);
 
-        return redirect()->route('users')
+        return redirect()->route('usuarios')
             ->with('success', 'Usuario creado exitosamente');
     }
 
@@ -86,7 +86,7 @@ class UserController extends Controller
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
 
-        return view('users.edit', compact('user', 'identificationTypes', 'roles'));
+        return view('usuarios.edit', compact('user', 'identificationTypes', 'roles'));
     }
 
     /**
@@ -101,7 +101,7 @@ class UserController extends Controller
         $attributes = $request->validated();
         $this->user_service->update($attributes, $id);
 
-        return redirect()->route('users')
+        return redirect()->route('usuarios')
             ->with('success', 'Usuario actualizado con éxito.');
     }
 
@@ -118,12 +118,12 @@ class UserController extends Controller
          $user = $this->user_repository->findById($id);
 
          if (!$user) {
-             return redirect()->route('users.index')
+             return redirect()->route('usuarios.index')
                  ->with('error', 'Usuario no encontrado.');
          }
          $user->delete();
 
-        return redirect()->route('users')
+        return redirect()->route('usuarios')
             ->with('success', 'Usuario eliminada exitosamente.');
     }
 }
