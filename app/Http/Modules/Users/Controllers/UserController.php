@@ -55,7 +55,7 @@ class UserController extends Controller
     {
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
-        return view('usuarios.create', compact('identificationTypes', 'roles'));
+        return view('users.create', compact('identificationTypes', 'roles'));
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
 
-        return view('usuarios.edit', compact('user', 'identificationTypes', 'roles'));
+        return view('users.edit', compact('user', 'identificationTypes', 'roles'));
     }
 
     /**
