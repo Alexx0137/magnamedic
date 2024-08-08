@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $this->user_service->create($request);
 
-        return redirect()->route('users')
+        return redirect()->route('usuarios')
             ->with('success', 'Usuario creado exitosamente');
     }
 

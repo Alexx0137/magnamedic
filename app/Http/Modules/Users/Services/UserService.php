@@ -32,7 +32,7 @@ class UserService
     public function create(SaveUserRequest $request): User
     {
         $data = $request->validated();
-        $data['password'] = bcrypt($data['password']);
+//        $data['password'] = bcrypt($data['password']);
         unset($data['confirm_password']);
 
         return $this->user_repository->create($data);

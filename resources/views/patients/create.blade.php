@@ -127,7 +127,7 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1"
-                                onclick="window.location.href='{{ route('doctors') }}'"
+                                onclick="window.location.href='{{ route('patients') }}'"
                         >
                             <i class="fas fa-fw fa-arrow-left"></i>
                             Cancelar

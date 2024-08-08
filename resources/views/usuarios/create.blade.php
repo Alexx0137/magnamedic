@@ -18,17 +18,17 @@
                                class="form-control"
                                name="name"
                                placeholder=""
-                               >
+                               required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="last_name">Apellidos:</label>
-                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="" >
+                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="identification_type_id">Tipo de documento:</label>
-                        <select id="identification_type_id" class="form-control" name="identification_type_id" >
+                        <select id="identification_type_id" class="form-control" name="identification_type_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
                                 <option value="{{ $identificationType->id }}">{{ $identificationType->name }}</option>
@@ -37,17 +37,17 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="identification">Número de documento:</label>
-                        <input type="text" id="identification" class="form-control" name="identification" placeholder="" >
+                        <input type="text" id="identification" class="form-control" name="identification" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="email">Correo:</label>
-                        <input type="email" id="email" class="form-control" name="email" placeholder="" >
+                        <input type="email" id="email" class="form-control" name="email" placeholder="" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="role_id">Rol del usuario:</label>
-                        <select id="role_id" class="form-control" name="role_id" >
+                        <select id="role_id" class="form-control" name="role_id" required>
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -63,7 +63,7 @@
                                name="password"
                                class="form-control"
                                placeholder=""
-
+                               required
                         >
                     </div>
                     <div class="form-group col-md-6">
@@ -74,7 +74,7 @@
                                class="form-control"
                                placeholder=""
 
-                               >
+                               required>
                     </div>
                 </div>
                 <div class="form-row mt-2">
