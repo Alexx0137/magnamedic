@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Modules\IdentificationTypes\Models\IdentificationType;
 use App\Http\Modules\Roles\Models\Role;
 use App\Http\Modules\Users\Repositories\UserRepository;
+use App\Http\Modules\Users\Requests\EditUserRequest;
 use App\Http\Modules\Users\Requests\SaveUserRequest;
 use App\Http\Modules\Users\Services\UserService;
 use App\Http\Modules\Usuarios\Requests\SaveUsuarioRequest;
@@ -95,11 +96,11 @@ class UsuarioController extends Controller
     /**
      * Actualiza un usuario específico.
      *
-     * @param SaveUserRequest $request Solicitud para actualizar el usuario.
+     * @param EditUserRequest $request Solicitud para actualizar el usuario.
      * @param int $id ID del usuario a actualizar.
      * @return RedirectResponse Redirige a la lista de users con un mensaje de éxito.
      */
-    public function update(SaveUserRequest $request, int $id): RedirectResponse
+    public function update(EditUserRequest $request, int $id): RedirectResponse
     {
         $attributes = $request->validated();
         $this->user_service->update($attributes, $id);
