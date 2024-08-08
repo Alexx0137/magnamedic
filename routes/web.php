@@ -8,6 +8,7 @@ use App\Http\Modules\MedicalSpecialities\Controllers\MedicalSpecialityController
 use App\Http\Modules\Patients\Controllers\PatientController;
 use App\Http\Modules\Reports\Controllers\ReportController;
 use App\Http\Modules\users\Controllers\UserController;
+use App\Http\Modules\Usuarios\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,16 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/users/form/{id}', 'edit')->name('users.edit');
         Route::put('/users/form/{id}', 'update')->name('users.update');
         Route::delete('/users/{id}', 'destroy')->name('users.destroy');
+    });
+
+    // usuarioU
+    Route::controller(UsuarioController::class)->group(function () {
+        Route::get('/usuarios', 'index')->name('usuarios');
+        Route::get('/usuarios/form', 'create')->name('create-usuario');
+        Route::post('/usuarios', 'store')->name('usuarios.store');
+        Route::get('/usuarios/form/{id}', 'edit')->name('usuarios.edit');
+        Route::put('/usuarios/form/{id}', 'update')->name('usuarios.update');
+        Route::delete('/usuarios/{id}', 'destroy')->name('usuarios.destroy');
     });
 
     // Medical specialities
