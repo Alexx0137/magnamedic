@@ -16,6 +16,7 @@ use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
@@ -62,21 +63,41 @@ class UsuarioController extends Controller
         return view('usuarios.create', compact('identificationTypes', 'roles'));
     }
 
+
     /**
      * Almacena una nueva usuario.
      *
      * @param SaveUserRequest $request Solicitud para guardar el nuevo usuario.
-     * @return RedirectResponse Redirige a la lista de users con un mensaje de éxito.
+     * @return RedirectResponse Redirige a la lista de usuarios con un mensaje de éxito.
      * @throws Exception
      * @author Nelson García
      */
     public function store(SaveUserRequest $request): RedirectResponse
     {
-        $this->user_service->create($request);
+        // Registrar la solicitud entrante para depuración
+        Log::info('Solicitud para crear usuario recibida:', $request->all());
 
-        return redirect()->route('usuarios')
-            ->with('success', 'Usuario creado exitosamente');
+        try {
+            // Intentar crear el usuario
+            $user = $this->user_service->create($request);
+
+            // Registrar el usuario creado para depuración
+            Log::info('Usuario creado exitosamente:', ['user' => $user]);
+
+            // Redirigir con mensaje de éxito
+            return redirect()->route('usuarios')
+                ->with('success', 'Usuario creado exitosamente');
+        } catch (Exception $e) {
+            // Registrar el error en caso de excepción
+            Log::error('Error al crear usuario:', ['error' => $e->getMessage()]);
+
+            // Redirigir con mensaje de error
+            return redirect()->route('usuarios')
+                ->with('error', 'Error al crear el usuario. Inténtelo de nuevo.');
+        }
     }
+
+
 
     /**
      * Muestra el formulario para editar un usuario específico.
