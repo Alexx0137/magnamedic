@@ -121,13 +121,6 @@
                     }
                 }
             });
-
-            @if(session('success'))
-            toastr.success("{{ session('success') }}", 'Éxito', {
-                "positionClass": "toast-top-right",
-                "timeOut": "5000"
-            });
-            @endif
         });
     </script>
 

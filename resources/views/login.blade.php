@@ -51,7 +51,7 @@
                                                    id="email"
                                                    name="email"
                                                    placeholder="Correo"
-                                                   required
+
                                                    autofocus
                                             >
                                             @error('email')
@@ -67,7 +67,7 @@
                                                    id="password"
                                                    name="password"
                                                    placeholder="Contraseña"
-                                                   required
+
                                             >
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">

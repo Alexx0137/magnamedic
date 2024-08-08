@@ -13,7 +13,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="identification_type_id">Tipo de documento:</label>
-                        <select name="identification_type_id" class="form-control" required>
+                        <select name="identification_type_id" class="form-control" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
                                 <option value="{{ $identificationType->id }}">{{ $identificationType->name }}</option>
@@ -27,7 +27,7 @@
                                id="identification"
                                name="identification"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
@@ -38,7 +38,7 @@
                                id="name"
                                name="name"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="last_name">Apellidos:</label>
@@ -47,13 +47,13 @@
                                id="last_name"
                                name="last_name"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="gender_id">Género:</label>
-                        <select name="gender_id" class="form-control" id="gender_id" required>
+                        <select name="gender_id" class="form-control" id="gender_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($genders as $gender)
                                 <option value="{{ $gender->id }}">{{ $gender->name }}</option>
@@ -67,7 +67,7 @@
                                id="address"
                                name="address"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
@@ -78,7 +78,7 @@
                                id="telephone"
                                name="telephone"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="email">Correo:</label>
@@ -87,7 +87,7 @@
                                id="email"
                                name="email"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row mt-2">
@@ -97,7 +97,7 @@
                                class="form-control"
                                id="birth_date"
                                name="birth_date"
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="license_number">Tarjeta profesional:</label>
@@ -105,13 +105,13 @@
                                class="form-control"
                                id="license_number"
                                name="license_number"
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row mt-2">
                     <div class="col-md-6">
                         <label for="medical_speciality_id">Especialidad:</label>
-                        <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" required>
+                        <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($specialities as $speciality)
                                 <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
@@ -122,11 +122,11 @@
                         <label>Estado:</label>
                         <div class="mt-2">
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="1" required>
+                                <input type="radio" name="state" class="form-check-input" value="1" >
                                 Activo
                             </label>
                             <label class="form-check-label">
-                                <input type="radio" name="state" class="form-check-input" value="0" required>
+                                <input type="radio" name="state" class="form-check-input" value="0" >
                                 Inactivo
                             </label>
                         </div>

@@ -75,8 +75,10 @@ class MedicalAppointmentController extends Controller
     public function store(SaveMedicalAppointmentRequest $request): RedirectResponse
     {
         $this->medical_appointment_service->create($request);
-        return redirect()->route('medical-appointments')
-            ->with('success', 'Cita médica creada exitosamente');
+
+        toastr()->success('Cita médica creada exitosamente', 'Notificación');
+
+        return redirect()->route('medical-appointments');
     }
 
     /**
@@ -111,13 +113,15 @@ class MedicalAppointmentController extends Controller
         $appointment = $this->medical_appointment_repository->findById($id);
 
         if (!$appointment) {
-            return redirect()->route('medical-appointments')->with('error', 'Cita no encontrada');
+
+            toastr()->error('Cita no encontrada', 'Notificación');
+            return redirect()->route('medical-appointments');
         }
 
         $this->medical_appointment_service->update($validatedData, $id);
 
-        return redirect()->route('medical-appointments')
-            ->with('success', 'Cita médica actualizada con éxito.');
+        toastr()->success('Cita médica actualizada exitosamente', 'Notificación');
+        return redirect()->route('medical-appointments');
     }
 
 
@@ -131,8 +135,8 @@ class MedicalAppointmentController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->medical_appointment_service->delete($id);
-        return redirect()->route('medical-appointments')
-            ->with('success', 'Cita médica eliminada con éxito.');
+        toastr()->success('Cita médica eliminada exitosamente', 'Notificación');
+        return redirect()->route('medical-appointments');
     }
 
     public function searchPatients(Request $request): JsonResponse

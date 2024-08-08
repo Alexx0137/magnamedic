@@ -28,9 +28,7 @@ class SavePatientRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('id');
-
-        $rules = [
+        return [
            'identification_type_id' => 'required|integer|exists:identification_types,id',
            'identification'         => 'required|string|max:20',
            'name'                   => 'required|string|max:45',
@@ -39,17 +37,10 @@ class SavePatientRequest extends FormRequest
            'blood_type_id'          => 'required|integer|exists:blood_types,id',
            'address'                => 'required|string|max:255',
            'telephone'              => 'required|string|regex:/^(\+\d{1,3}[- ]?)?\(?\d{1,4}\)?([- ]?\d{1,4}){1,4}$/',
-           'email'                  => 'required|email|unique:patients,email,' . $id,
-           'birth_date'          => 'required|date',
+            'email'                 => 'required|email',
+           'birth_date'             => 'required|date',
            'state'                  => 'required|boolean'
         ];
-
-        if ($id) {
-            $rules['email'] = 'required|email|unique:patients,email,' . $id;
-        }
-
-        return $rules;
-
     }
 
     /**+

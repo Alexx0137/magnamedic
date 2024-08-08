@@ -13,7 +13,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="identification_type_id">Tipo de documento:</label>
-                        <select name="identification_type_id" class="form-control" required>
+                        <select name="identification_type_id" class="form-control" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
                                 <option value="{{ $identificationType->id }}">{{ $identificationType->name }}</option>
@@ -27,7 +27,7 @@
                                id="identification"
                                name="identification"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
@@ -38,7 +38,7 @@
                                id="name"
                                name="name"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="last_name">Apellidos:</label>
@@ -47,13 +47,13 @@
                                id="last_name"
                                name="last_name"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="gender_id">Género:</label>
-                        <select name="gender_id" class="form-control" id="gender_id" required>
+                        <select name="gender_id" class="form-control" id="gender_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($genders as $gender)
                                 <option value="{{ $gender->id }}">{{ $gender->name }}</option>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="blood_type_id">RH:</label>
-                        <select name="blood_type_id" class="form-control" id="blood_type_id" required>
+                        <select name="blood_type_id" class="form-control" id="blood_type_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($bloodTypes as $bloodType)
                                 <option value="{{ $bloodType->id }}">{{ $bloodType->name }}</option>
@@ -78,7 +78,7 @@
                                id="address"
                                name="address"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="telephone">Teléfono:</label>
@@ -87,7 +87,7 @@
                                id="telephone"
                                name="telephone"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row mt-2">
@@ -98,7 +98,7 @@
                                id="email"
                                name="email"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="birth_date">Fecha de nacimiento:</label>
@@ -106,7 +106,7 @@
                                class="form-control"
                                id="birth_date"
                                name="birth_date"
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row mt-2">

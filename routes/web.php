@@ -46,7 +46,6 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/patients/form/{id}', 'edit')->name('patients.edit');
         Route::put('/patients/form/{id}', 'update')->name('patients.update');
         Route::delete('/patients/{id}', 'destroy')->name('patients.destroy');
-        Route::get('/patients/search', [PatientController::class, 'search'])->name('patients.search');
     });
 
     // Users
@@ -57,16 +56,6 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/users/form/{id}', 'edit')->name('users.edit');
         Route::put('/users/form/{id}', 'update')->name('users.update');
         Route::delete('/users/{id}', 'destroy')->name('users.destroy');
-    });
-
-//     Usuarios
-    Route::controller(UsuarioController::class)->group(function () {
-        Route::get('/usuarios', 'index')->name('usuarios');
-        Route::get('/usuarios/form', 'create')->name('create-usuario');
-        Route::post('/usuarios', 'store')->name('usuarios.store');
-        Route::get('/usuarios/form/{id}', 'edit')->name('usuarios.edit');
-        Route::put('/usuarios/form/{id}', 'update')->name('usuarios.update');
-        Route::delete('/usuarios/{id}', 'destroy')->name('usuarios.destroy');
     });
 
     // Medical specialities
@@ -87,6 +76,7 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/doctors/form/{id}', 'edit')->name('doctors.edit');
         Route::put('/doctors/form/{id}', 'update')->name('doctors.update');
         Route::delete('/doctors/{id}', 'destroy')->name('doctors.destroy');
+
     });
 
 
@@ -98,7 +88,6 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/medical-appointments/form/{id}', 'edit')->name('medical-appointments.edit');
         Route::put('/medical-appointments/form/{id}', 'update')->name('medical-appointments.update');
         Route::delete('/medical-appointments/{id}', 'destroy')->name('medical-appointments.destroy');
-        //Route::get('/patients/search', [MedicalAppointmentController::class, 'searchPatients'])->name('patients.search');
     });
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports');

@@ -49,19 +49,13 @@ class SaveMedicalAppointmentRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'patient_id.required' => 'El campo paciente es obligatorio.',
-            'patient_id.exists' => 'El paciente seleccionado no es válido.',
-            'appointment_state_id.required' => 'El campo estado es obligatorio.',
-            'appointment_state_id.integer' => 'El estado debe ser un número entero.',
-            'medical_speciality_id.required' => 'El campo especialidad es obligatorio.',
-            'medical_speciality_id.exists' => 'La especialidad seleccionada no es válida.',
-            'doctor_id.required' => 'El campo médico es obligatorio.',
-            'doctor_id.exists' => 'El médico seleccionado no es válido.',
-            'date.required' => 'El campo fecha es obligatorio.',
-            'date.date' => 'El campo fecha debe ser una fecha válida.',
-            'time.required' => 'El campo hora es obligatorio.',
-            'time.date_format' => 'El campo hora debe tener el formato HH:mm.',
-            'observations.string' => 'El campo observaciones debe ser una cadena de texto.',
+            'patient_id' => 'paciente',
+            'appointment_state_id' => 'estado',
+            'medical_speciality_id' => 'especialidad médica',
+            'doctor_id' => 'médico',
+            'date' => 'fecha',
+            'time' => 'hora',
+            'observations' => 'observaciones',
         ];
     }
 }

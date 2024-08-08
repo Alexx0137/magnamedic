@@ -57,6 +57,7 @@ class DoctorController extends Controller
         $identificationTypes = IdentificationType::all();
         $specialities = MedicalSpeciality::all();
         $genders = Gender::all();
+
         return view('doctors.create', compact('identificationTypes', 'specialities', 'genders'));
     }
 
@@ -72,8 +73,8 @@ class DoctorController extends Controller
     {
         $this->doctor_service->create($request);
 
-        return redirect()->route('doctors')
-            ->with('success', 'Médico creado exitosamente');
+        toastr()->success('Médico creado exitosamente', 'Notificación');
+        return redirect()->route('doctors');
     }
 
     /**
@@ -108,14 +109,15 @@ class DoctorController extends Controller
         $doctor = $this->doctor_repository->findById($id);
 
         if (!$doctor) {
-            return redirect()->route('doctors')
-                ->with('error', 'Especialidad no encontrada');
+
+            toastr()->error('Médico no encontrado', 'Notificación');
+            return redirect()->route('doctors');
         }
 
         $this->doctor_service->update($validatedData, $id);
 
-        return redirect()->route('doctors')
-            ->with('success', 'Médico actualizado con éxito.');
+        toastr()->success('Médico actualizado exitosamente', 'Notificación');
+        return redirect()->route('doctors');
     }
 
 
@@ -129,7 +131,8 @@ class DoctorController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->doctor_service->delete($id);
-        return redirect()->route('doctors')
-            ->with('success', 'Médico eliminado con éxito.');
+
+        toastr()->success('Médico eliminado exitosamente', 'Notificación');
+        return redirect()->route('doctors');
     }
 }

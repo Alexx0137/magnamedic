@@ -74,8 +74,8 @@ class PatientController extends Controller
     {
         $this->patient_service->create($request);
 
-        return redirect()->route('patients')
-            ->with('success', 'Paciente creado exitosamente');
+        toastr()->success('Paciente creado exitosamente.', 'Notificación');
+        return redirect()->route('patients');
     }
 
     public function show(Patient $patient)
@@ -114,11 +114,20 @@ class PatientController extends Controller
      */
     public function update(SavePatientRequest $request, int $id): RedirectResponse
     {
-        $attributes = $request->validated();
-        $this->patient_service->update($attributes, $id);
+        $validatedData = $request->validated();
 
-        return redirect()->route('patients')
-            ->with('success', 'Paciente actualizado exitosamente.');
+        $patient = $this->patient_repository->findById($id);
+
+        if (!$patient) {
+
+            toastr()->error('Paciente no encontrado', 'Notificación');
+            return redirect()->route('patients');
+        }
+
+        $this->patient_service->update($validatedData, $id);
+
+        toastr()->success('Paciente actualizado exitosamente', 'Notificación');
+        return redirect()->route('patients');
     }
 
     /**
@@ -132,34 +141,14 @@ class PatientController extends Controller
         $patient = $this->patient_repository->findById($id);
 
         if (!$patient) {
-            return redirect()->route('patients.index')
-                ->with('error', 'Paciente no encontrado.');
+
+            toastr()->error('Paciente no encontrado.', 'Notificación');
+            return redirect()->route('patients.index');
         }
 
         $patient->delete();
 
-        return redirect()->route('patients')
-            ->with('success', 'Paciente eliminado exitosamente.');
+        toastr()->success('Paciente eliminado exitosamente.', 'Notificación');
+        return redirect()->route('patients');
     }
-
-    public function search(Request $request): JsonResponse
-    {
-
-
-        $term = $request->query('term');
-        $patients = Patient::where('name', 'LIKE', "%{$term}%")
-            ->orWhere('identification', 'LIKE', "%{$term}%")
-            ->get()
-            ->map(function($patient) {
-                return [
-                    'value' => $patient->id,
-                    'label' => $patient->name . ' ' . $patient->last_name . ' - ' . $patient->identification,
-                ];
-            });
-
-        return response()->json($patients);
-    }
-
-
-
 }

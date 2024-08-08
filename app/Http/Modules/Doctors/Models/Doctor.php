@@ -34,7 +34,7 @@ class Doctor extends Model
     /**
      * Relación con el modelo Role.
      */
-    public function role()
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
@@ -42,7 +42,7 @@ class Doctor extends Model
     /**
      * Relación con el modelo IdentificationType.
      */
-    public function identificationType()
+    public function identificationType(): BelongsTo
     {
         return $this->belongsTo(IdentificationType::class, 'identification_type_id');
     }

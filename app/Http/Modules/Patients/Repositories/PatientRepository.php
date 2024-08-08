@@ -59,6 +59,6 @@ class PatientRepository
      */
     public function create(array $data): Patient
     {
-        return $this->model->create($data);
+        return Patient::create($data);
     }
 }

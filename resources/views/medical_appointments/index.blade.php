@@ -15,8 +15,7 @@
 
         <div class="card-body">
             <div class="search-container mb-3">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <button class="search-button">Buscar</button>
+                <input type="text" id="search" class="search-input" placeholder="Buscar..." aria-label="Buscar...">
             </div>
             <div class="table-responsive">
                 <table class="styled-table">
@@ -32,9 +31,9 @@
                         <th>Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="appointments-table-body">
                     @foreach($appointments as $appointment)
-                        <tr>
+                        <tr class="appointment-row">
                             <td>{{ $appointment->date }}</td>
                             <td>{{ $appointment->time }}</td>
                             <td>{{ $appointment->patient->name ?? 'No disponible' }}</td>
@@ -107,12 +106,31 @@
                 });
             });
 
-            @if(session('success'))
-            toastr.success("{{ session('success') }}", 'Éxito', {
-                "positionClass": "toast-top-right",
-                "timeOut": "5000"
+            const searchInput = document.getElementById('search');
+            const tableBody = document.getElementById('appointments-table-body');
+            const rows = tableBody.getElementsByClassName('appointment-row');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                for (const row of rows) {
+                    const cells = row.getElementsByTagName('td');
+                    let rowContainsSearchTerm = false;
+
+                    for (const cell of cells) {
+                        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                            rowContainsSearchTerm = true;
+                            break;
+                        }
+                    }
+
+                    if (rowContainsSearchTerm) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
             });
-            @endif
         });
     </script>
 

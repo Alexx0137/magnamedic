@@ -70,8 +70,8 @@ class UserController extends Controller
     {
         $this->user_service->create($request);
 
-        return redirect()->route('usuarios')
-            ->with('success', 'Usuario creado exitosamente');
+        toastr()->success('Usuario creado exitosamente.', 'Notificación');
+        return redirect()->route('users');
     }
 
     /**
@@ -101,10 +101,9 @@ class UserController extends Controller
         $attributes = $request->validated();
         $this->user_service->update($attributes, $id);
 
-        return redirect()->route('users')
-            ->with('success', 'Usuario actualizado con éxito.');
+        toastr()->success('Usuario actualizado exitosamente.', 'Notificación');
+        return redirect()->route('users');
     }
-
 
     /**
      * Elimina unn usuario específico.
@@ -118,12 +117,13 @@ class UserController extends Controller
          $user = $this->user_repository->findById($id);
 
          if (!$user) {
-             return redirect()->route('users.index')
-                 ->with('error', 'Usuario no encontrado.');
+
+             toastr()->error('Usuario no encontrado.', 'Notificación');
+             return redirect()->route('users.index');
          }
          $user->delete();
 
-        return redirect()->route('users')
-            ->with('success', 'Usuario eliminada exitosamente.');
+        toastr()->success('Usuario eliminada exitosamente.', 'Notificación');
+        return redirect()->route('users');
     }
 }

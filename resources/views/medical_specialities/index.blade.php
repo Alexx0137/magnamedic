@@ -14,10 +14,10 @@
         </div>
 
         <div class="card-body">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <button class="search-button">Buscar</button>
-            </div>
+{{--            <div class="search-container">--}}
+{{--                <input type="text" class="search-input" placeholder="Buscar...">--}}
+{{--                <button class="search-button">Buscar</button>--}}
+{{--            </div>--}}
             <div class="table-responsive">
                 <table class="styled-table">
                     <thead>
@@ -81,16 +81,8 @@
                                     });
                                 });
                             });
-
-                            @if(session('success'))
-                            toastr.success("{{ session('success') }}", 'Éxito', {
-                                "positionClass": "toast-top-right",
-                                "timeOut": "5000"
-                            });
-                            @endif
                         });
                     </script>
-
                     </tbody>
                 </table>
             </div>

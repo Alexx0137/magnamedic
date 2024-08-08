@@ -6,7 +6,7 @@
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-2">
                 <h1 class="h3 mb-0 text-gray-800">Usuarios</h1>
-                <a href="{{ route('create-usuario') }}" class="btn btn-primary btn-sm btn-icon-split">
+                <a href="{{ route('create-user') }}" class="btn btn-primary btn-sm btn-icon-split">
                     <i class="fas fa-plus fa-sm"></i>
                     Crear usuario
                 </a>
@@ -41,7 +41,7 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="{{ route('usuarios.edit', $user->id) }}"
+                                <a href="{{ route('users.edit', $user->id) }}"
                                    class="icon-color btn btn-bg-light btn-sm btn-active-color-primary me-3"
                                    title="Editar">
                                     <i class="fas fa-edit fa-sm"></i>
@@ -90,14 +90,6 @@
                                     });
                                 });
                             });
-
-                            // Mostrar toast si hay un mensaje de éxito en la sesión
-                            @if(session('success'))
-                            toastr.success("{{ session('success') }}", 'Éxito', {
-                                "positionClass": "toast-top-right",
-                                "timeOut": "5000"
-                            });
-                            @endif
                         });
 
                     </script>

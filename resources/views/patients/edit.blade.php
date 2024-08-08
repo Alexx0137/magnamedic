@@ -14,7 +14,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="identification_type_id">Tipo de documento:</label>
-                        <select name="identification_type_id" class="form-control" required>
+                        <select name="identification_type_id" class="form-control" >
                             <option value="" disabled>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
                                 <option
@@ -32,7 +32,7 @@
                                name="identification"
                                placeholder=""
                                value="{{ old('identification', $patient->identification) }}"
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
@@ -44,7 +44,7 @@
                                name="name"
                                value="{{ old('name', $patient->name) }}"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="last_name">Apellidos:</label>
@@ -53,13 +53,13 @@
                                id="last_name"
                                name="last_name"
                                value="{{ old('last_name', $patient->last_name) }}"
-                               placeholder="" required>
+                               placeholder="" >
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="gender_id">Género:</label>
-                        <select class="form-control" id="gender_id" name="gender_id" required>
+                        <select class="form-control" id="gender_id" name="gender_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($genders as $gender)
                                 <option
@@ -71,7 +71,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="blood_type_id">RH:</label>
-                        <select name="blood_type_id" class="form-control" id="blood_type_id" required>
+                        <select name="blood_type_id" class="form-control" id="blood_type_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($bloodTypes as $bloodType)
                                 <option
@@ -91,7 +91,7 @@
                                name="address"
                                value="{{ old('address', $patient->address) }}"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="telephone">Teléfono:</label>
@@ -101,7 +101,7 @@
                                name="telephone"
                                value="{{ old('telephone', $patient->telephone) }}"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row">
@@ -113,7 +113,7 @@
                                name="email"
                                value="{{ old('email', $patient->email) }}"
                                placeholder=""
-                               required>
+                               >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="birth_date">Fecha de nacimiento:</label>
@@ -123,7 +123,7 @@
                                name="birth_date"
                                value="{{ old('birth_date', $patient->birth_date) }}"
                                placeholder=""
-                               required>
+                               >
                     </div>
                 </div>
                 <div class="form-row mt-2">

@@ -65,8 +65,9 @@ class MedicalSpecialityController extends Controller
     public function store(SaveMedicalSpecialityRequest $request): RedirectResponse
     {
         $this->medical_speciality_service->create($request);
-        return redirect()->route('medical-specialities')
-            ->with('success', 'Especialidad médica creada exitosamente');
+
+        toastr()->success('Especialidad médica creada exitosamente', 'Notificación');
+        return redirect()->route('medical-specialities');
     }
 
     /**
@@ -97,13 +98,15 @@ class MedicalSpecialityController extends Controller
         $speciality = $this->medical_speciality_repository->findById($id);
 
         if (!$speciality) {
-            return redirect()->route('medical-specialities')->with('error', 'Especialidad no encontrada');
+
+            toastr()->error('Especialidad médica no encontrada', 'Notificación');
+            return redirect()->route('medical-specialities');
         }
 
         $this->medical_speciality_service->update($validatedData, $id);
 
-        return redirect()->route('medical-specialities')
-            ->with('success', 'Especialidad médica actualizada con éxito.');
+        toastr()->success('Especialidad médica actualizada exitosamente.', 'Notificación');
+        return redirect()->route('medical-specialities');
     }
 
 
@@ -117,7 +120,8 @@ class MedicalSpecialityController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->medical_speciality_service->delete($id);
-        return redirect()->route('medical-specialities')
-            ->with('success', 'Especialidad médica eliminada con éxito.');
+
+        toastr()->success('Especialidad médica eliminada exitosamente', 'Notificación');
+        return redirect()->route('medical-specialities');
     }
 }

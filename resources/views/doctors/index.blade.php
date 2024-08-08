@@ -14,9 +14,8 @@
         </div>
 
         <div class="card-body">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <button class="search-button">Buscar</button>
+            <div class="search-container mb-3">
+                <input type="text" id="search" class="search-input" placeholder="Buscar..." aria-label="Buscar...">
             </div>
             <div class="table-responsive">
                 <table class="styled-table">
@@ -31,9 +30,9 @@
                         <th>Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="doctors-table-body">
                     @foreach($doctors as $doctor)
-                        <tr>
+                        <tr class="doctor-row">
                             <td>{{ $doctor->identification }}</td>
                             <td>{{ $doctor->name }} {{ $doctor->last_name }}</td>
                             <td>{{ $doctor->telephone }}</td>
@@ -66,47 +65,65 @@
                                 </form>
                         </tr>
                     @endforeach
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            document.querySelectorAll('.delete-form').forEach(function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    event.preventDefault();
-
-                                    const doctorName = form.getAttribute('data-name');
-                                    const doctorLastName = form.getAttribute('data-last_name');
-
-                                    Swal.fire({
-                                        title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar al médico "${doctorName} ${doctorLastName}"?`,
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Sí, eliminar',
-                                        cancelButtonText: 'Cancelar'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            form.submit();
-                                        }
-                                    });
-                                });
-                            });
-
-                            @if(session('success'))
-                            toastr.success("{{ session('success') }}", 'Éxito', {
-                                "positionClass": "toast-top-right",
-                                "timeOut": "5000"
-                            });
-                            @endif
-                        });
-
-                    </script>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.delete-form').forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const doctorName = form.getAttribute('data-name');
+                    const doctorLastName = form.getAttribute('data-last_name');
+
+                    Swal.fire({
+                        title: '¿Eliminar?',
+                        text: `¡Estás seguro de eliminar al médico "${doctorName} ${doctorLastName}"?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, eliminar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+
+            const searchInput = document.getElementById('search');
+            const tableBody = document.getElementById('doctors-table-body');
+            const rows = tableBody.getElementsByClassName('doctor-row');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                for (const row of rows) {
+                    const cells = row.getElementsByTagName('td');
+                    let rowContainsSearchTerm = false;
+
+                    for (const cell of cells) {
+                        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                            rowContainsSearchTerm = true;
+                            break;
+                        }
+                    }
+
+                    if (rowContainsSearchTerm) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+    </script>
 
 @endsection

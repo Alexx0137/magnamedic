@@ -14,16 +14,18 @@
                 <div class="form-row">
                     <!-- Búsqueda del Paciente -->
                     <div class="col-md-6 mb-3">
-                        <label for="patient_search">Buscar Paciente:</label>
-                        <input type="text" class="form-control" id="patient_search"
-                               placeholder="Buscar paciente por nombre o ID">
-                        <input type="hidden" id="patient_id" name="patient_id" required>
-                        <ul id="patient_suggestions" class="list-group"></ul>
+                        <label for="patient_id">Buscar Paciente:</label>
+                        <select class="form-control" id="patient_id" name="patient_id" >
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            @foreach($patients as $patient)
+                                <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <!-- Estado -->
                     <div class="col-md-6 mb-3">
                         <label for="appointment_state_id">Estado:</label>
-                        <select class="form-control" id="appointment_state_id" name="appointment_state_id" required>
+                        <select class="form-control" id="appointment_state_id" name="appointment_state_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($appointmentStates as $state)
                                 <option value="{{ $state->id }}">{{ $state->name }}</option>
@@ -35,7 +37,7 @@
                     <!-- Selección de Especialidad -->
                     <div class="col-md-6 mb-3">
                         <label for="medical_speciality_id">Especialidad:</label>
-                        <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" required>
+                        <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($specialities as $speciality)
                                 <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
@@ -45,7 +47,7 @@
                     <!-- Selección del Médico -->
                     <div class="col-md-6 mb-3">
                         <label for="doctor_id">Médico:</label>
-                        <select class="form-control" id="doctor_id" name="doctor_id" required>
+                        <select class="form-control" id="doctor_id" name="doctor_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($doctors as $doctor)
                                 <option value="{{ $doctor->id }}"
@@ -58,11 +60,11 @@
                     <!-- Selección de Fecha y Hora -->
                     <div class="col-md-6 mb-3">
                         <label for="date">Fecha de la Cita:</label>
-                        <input type="date" class="form-control" id="date" name="date" required>
+                        <input type="date" class="form-control" id="date" name="date" >
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="time">Hora de la Cita:</label>
-                        <input type="time" class="form-control" id="time" name="time" required min="06:00" max="18:00">
+                        <input type="time" class="form-control" id="time" name="time"  min="06:00" max="18:00">
                     </div>
                 </div>
                 <div class="form-row">
@@ -96,52 +98,4 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Autocompletado de paciente
-            const patientSearchInput = document.getElementById('patient_search');
-            const patientIdInput = document.getElementById('patient_id');
-            const patientSuggestions = document.getElementById('patient_suggestions');
-
-            patientSearchInput.addEventListener('input', function () {
-                const query = this.value;
-                if (query.length >= 1) {
-                    fetch(`{{ route('patients.search') }}?term=${query}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            patientSuggestions.innerHTML = '';
-                            data.forEach(item => {
-                                const li = document.createElement('li');
-                                li.textContent = item.label;
-                                li.classList.add('list-group-item');
-                                li.addEventListener('click', function () {
-                                    patientSearchInput.value = item.label;
-                                    patientIdInput.value = item.value; // Aquí se establece el valor de patient_id
-                                    patientSuggestions.innerHTML = '';
-                                });
-                                patientSuggestions.appendChild(li);
-                            });
-                        });
-                } else {
-                    patientSuggestions.innerHTML = '';
-                }
-            });
-
-            // Filtrar médicos por especialidad
-            const specialitySelect = document.getElementById('medical_speciality_id');
-            const doctorSelect = document.getElementById('doctor_id');
-
-            specialitySelect.addEventListener('change', function () {
-                const selectedSpeciality = this.value;
-                Array.from(doctorSelect.options).forEach(option => {
-                    if (option.dataset.speciality === selectedSpeciality) {
-                        option.style.display = '';
-                    } else {
-                        option.style.display = 'none';
-                    }
-                });
-                doctorSelect.value = '';
-            });
-        });
-    </script>
 @endsection
