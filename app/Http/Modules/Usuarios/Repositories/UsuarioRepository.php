@@ -41,9 +41,9 @@ class UsuarioRepository
      * Obtener un usuario por su ID.
      *
      * @param int $id ID del usuario.
-     * @return Usuario|null
+     * @return User|null
      */
-    public function findById(int $id): ?Usuario
+    public function findById(int $id): ?User
     {
         return $this->model->find($id);
     }
@@ -52,9 +52,9 @@ class UsuarioRepository
      * Crear un nuevo usuario.
      *
      * @param array $data Datos del usuario.
-     * @return Usuario
+     * @return User
      */
-    public function create(array $data): Usuario
+    public function create(array $data): User
     {
         return $this->model->create($data);
     }

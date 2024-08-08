@@ -59,7 +59,7 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::delete('/users/{id}', 'destroy')->name('users.destroy');
     });
 
-    // usuarioU
+    // Usuarios
     Route::controller(UsuarioController::class)->group(function () {
         Route::get('/usuarios', 'index')->name('usuarios');
         Route::get('/usuarios/form', 'create')->name('create-usuario');

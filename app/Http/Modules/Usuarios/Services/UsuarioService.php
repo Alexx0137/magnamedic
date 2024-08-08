@@ -2,6 +2,8 @@
 
 namespace App\Http\Modules\Usuarios\Services;
 
+use App\Http\Modules\Users\Models\User;
+use App\Http\Modules\Users\Requests\SaveUserRequest;
 use App\Http\Modules\Usuarios\Models\Usuario;
 use App\Http\Modules\Usuarios\Requests\SaveUsuarioRequest;
 use App\Http\Modules\Usuarios\Repositories\UsuarioRepository;
@@ -25,11 +27,11 @@ class UsuarioService
     /**
      * Crea un nuevo usuario.
      *
-     * @param SaveUsuarioRequest $request Solicitud con los atributos del usuario.
-     * @return Usuario El usuario creado.
+     * @param SaveUserRequest $request Solicitud con los atributos del usuario.
+     * @return User El usuario creado.
      * @throws Exception Sí ocurre un error durante la creación.
      */
-    public function create(SaveUsuarioRequest $request): Usuario
+    public function create(SaveUserRequest $request): User
     {
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);

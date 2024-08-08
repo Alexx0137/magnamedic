@@ -5,6 +5,9 @@ namespace App\Http\Modules\Usuarios\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Modules\IdentificationTypes\Models\IdentificationType;
 use App\Http\Modules\Roles\Models\Role;
+use App\Http\Modules\Users\Repositories\UserRepository;
+use App\Http\Modules\Users\Requests\SaveUserRequest;
+use App\Http\Modules\Users\Services\UserService;
 use App\Http\Modules\Usuarios\Requests\SaveUsuarioRequest;
 use App\Http\Modules\Usuarios\Services\UsuarioService;
 use App\Http\Modules\Usuarios\Repositories\UsuarioRepository;
@@ -15,20 +18,20 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
-    private UsuarioService $usuario_service;
-    private UsuarioRepository $usuario_repository;
+    private UserService $user_service;
+    private UserRepository $user_repository;
 
     /**
      * Constructor del controlador.
      *
-     * @param UsuarioService $usuario_service
-     * @param UsuarioRepository $usuario_repository
+     * @param UserService $user_service
+     * @param UserRepository $user_repository
      */
-    public function __construct(UsuarioService    $usuario_service,
-                                UsuarioRepository $usuario_repository)
+    public function __construct(UserService    $user_service,
+                                UserRepository $user_repository)
     {
-        $this->usuario_service = $usuario_service;
-        $this->usuario_repository = $usuario_repository;
+        $this->user_service = $user_service;
+        $this->user_repository = $user_repository;
     }
 
     /**
@@ -40,9 +43,9 @@ class UsuarioController extends Controller
      */
     public function index(Request $request): View
     {
-        $usuarios = $this->usuario_repository->findAll($request);
+        $users = $this->user_repository->findAll($request);
 
-        return view('usuarios.index', compact('usuarios'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -55,22 +58,22 @@ class UsuarioController extends Controller
     {
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
-        return view('usuarios.create', compact('identificationTypes', 'roles'));
+        return view('users.create', compact('identificationTypes', 'roles'));
     }
 
     /**
      * Almacena una nueva usuario.
      *
-     * @param SaveUsuarioRequest $request Solicitud para guardar el nuevo usuario.
+     * @param SaveUserRequest $request Solicitud para guardar el nuevo usuario.
      * @return RedirectResponse Redirige a la lista de usuarios con un mensaje de éxito.
      * @throws Exception
      * @author Nelson García
      */
-    public function store(SaveUsuarioRequest $request): RedirectResponse
+    public function store(SaveUserRequest $request): RedirectResponse
     {
-        $this->usuario_service->create($request);
+        $this->user_service->create($request);
 
-        return redirect()->route('usuarios')
+        return redirect()->route('users')
             ->with('success', 'Usuario creado exitosamente');
     }
 
@@ -82,26 +85,26 @@ class UsuarioController extends Controller
      */
     public function edit(int $id): View
     {
-        $usuario = $this->usuario_repository->findById($id);
+        $user = $this->user_repository->findById($id);
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
 
-        return view('usuarios.edit', compact('usuario', 'identificationTypes', 'roles'));
+        return view('users.edit', compact('user', 'identificationTypes', 'roles'));
     }
 
     /**
      * Actualiza un usuario específico.
      *
-     * @param SaveUsuarioRequest $request Solicitud para actualizar el usuario.
+     * @param SaveUserRequest $request Solicitud para actualizar el usuario.
      * @param int $id ID del usuario a actualizar.
      * @return RedirectResponse Redirige a la lista de usuarios con un mensaje de éxito.
      */
-    public function update(SaveUsuarioRequest $request, int $id): RedirectResponse
+    public function update(SaveUserRequest $request, int $id): RedirectResponse
     {
         $attributes = $request->validated();
-        $this->usuario_service->update($attributes, $id);
+        $this->user_service->update($attributes, $id);
 
-        return redirect()->route('usuarios')
+        return redirect()->route('users')
             ->with('success', 'Usuario actualizado con éxito.');
     }
 
@@ -115,15 +118,15 @@ class UsuarioController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-         $usuario = $this->usuario_repository->findById($id);
+        $user = $this->user_repository->findById($id);
 
-         if (!$usuario) {
-             return redirect()->route('usuarios.index')
-                 ->with('error', 'Usuario no encontrado.');
-         }
-         $usuario->delete();
+        if (!$user) {
+            return redirect()->route('users.index')
+                ->with('error', 'Usuario no encontrado.');
+        }
+        $user->delete();
 
-        return redirect()->route('usuarios')
+        return redirect()->route('users')
             ->with('success', 'Usuario eliminada exitosamente.');
     }
 }
