@@ -2,21 +2,21 @@
 
 namespace App\Http\Modules\Usuarios\Repositories;
 
-use App\Http\Modules\Usuarios\Models\Usuario;
+use App\Http\Modules\Users\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 
 class UsuarioRepository
 {
-    protected Usuario $model;
+    protected User $model;
 
     /**
      * Método constructor.
      *
-     * @param Usuario $usuario Modelo.
+     * @param User $usuario Modelo.
      * @author Nelson García
      */
-    public function __construct(Usuario $usuario)
+    public function __construct(User $usuario)
     {
         $this->model = $usuario;
     }
