@@ -7,7 +7,7 @@ use App\Http\Modules\MedicalAppointments\Controllers\MedicalAppointmentControlle
 use App\Http\Modules\MedicalSpecialities\Controllers\MedicalSpecialityController;
 use App\Http\Modules\Patients\Controllers\PatientController;
 use App\Http\Modules\Reports\Controllers\ReportController;
-use App\Http\Modules\users\Controllers\UserController;
+use App\Http\Modules\Users\Controllers\UserController;
 use App\Http\Modules\Usuarios\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
