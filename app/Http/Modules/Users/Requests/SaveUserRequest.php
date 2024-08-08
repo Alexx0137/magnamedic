@@ -35,19 +35,15 @@ class SaveUserRequest extends FormRequest
             'identification_type_id' => 'required',
             'name'                   => 'required|max:255',
             'last_name'              => 'required|max:255',
-            'email'                  => 'required|email|unique:users,email,' . $id,
+            'email'                  => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
             'password'               => 'nullable|min:5|confirmed',
             'role_id'                => 'required',
             'state'                  => 'required',
         ];
 
-        if ($id) {
-            $rules['email'] = 'required|email|unique:users,email,' . $id;
-        }
-
         return $rules;
-
     }
+
 
     /**+
      * Establecer el nombre de los atributos.
