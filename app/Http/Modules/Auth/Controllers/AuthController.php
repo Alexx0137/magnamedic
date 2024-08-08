@@ -20,7 +20,7 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request): RedirectResponse
     {
-//        $user = User::where('email', $request->email)->first();
+//        $user = Users::where('email', $request->email)->first();
         $user = User::where('email', $request->email)->with('role')->first();
 
         if ($user) {

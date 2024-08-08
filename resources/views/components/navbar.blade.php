@@ -14,7 +14,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <!-- User info section -->
+                            <!-- Users info section -->
                             <a class="drop-info d-flex align-items-center" href="#">
                                 <div class="icon-container">
                                     <i class="fas fa-user fa-fw"></i>
