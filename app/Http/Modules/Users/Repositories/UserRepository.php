@@ -56,7 +56,7 @@ class UserRepository
      */
     public function create(array $data): User
     {
-        return $this->model->create($data);
+        return User::create($data);
     }
 
 }

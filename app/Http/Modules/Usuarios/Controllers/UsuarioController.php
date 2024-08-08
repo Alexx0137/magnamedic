@@ -96,11 +96,11 @@ class UsuarioController extends Controller
     /**
      * Actualiza un usuario específico.
      *
-     * @param EditUserRequest $request Solicitud para actualizar el usuario.
+     * @param SaveUserRequest $request Solicitud para actualizar el usuario.
      * @param int $id ID del usuario a actualizar.
      * @return RedirectResponse Redirige a la lista de users con un mensaje de éxito.
      */
-    public function update(EditUserRequest $request, int $id): RedirectResponse
+    public function update(SaveUserRequest $request, int $id): RedirectResponse
     {
         $attributes = $request->validated();
         $this->user_service->update($attributes, $id);

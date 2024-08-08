@@ -28,17 +28,24 @@ class SaveUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
 
-        return  [
+        $rules = [
             'identification'         => 'required|max:15',
             'identification_type_id' => 'required',
             'name'                   => 'required|max:255',
             'last_name'              => 'required|max:255',
-            'email'                  => 'required|email|unique:users,email,',
+            'email'                  => 'required|email|unique:users,email,' . $id,
             'password'               => 'nullable|min:5|confirmed',
             'role_id'                => 'required',
             'state'                  => 'required',
         ];
+
+        if ($id) {
+            $rules['email'] = 'required|email|unique:users,email,' . $id;
+        }
+
+        return $rules;
 
     }
 
