@@ -33,12 +33,12 @@ class UserService
     {
         $data = $request->all();
 
-        if (empty($data['password'])) {
-            $data['password'] = 'secret';
-        }
-        $data['password'] = bcrypt($data['password']);
-
-        unset($data['confirm_password']);
+//        if (empty($data['password'])) {
+//            $data['password'] = 'secret';
+//        }
+//        $data['password'] = bcrypt($data['password']);
+//
+//        unset($data['confirm_password']);
 
         return $this->user_repository->create($data);
     }
