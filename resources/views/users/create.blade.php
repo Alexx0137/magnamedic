@@ -8,7 +8,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('usuarios.store') }}" class="form">
+            <form method="POST" action="{{ route('users.store') }}" class="form">
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -78,7 +78,7 @@
 
                 <div class="form-row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1" onclick="window.location.href='{{ route('usuarios') }}'">
+                        <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1" onclick="window.location.href='{{ route('users') }}'">
                             <i class="fas fa-fw fa-arrow-left"></i>
                             Cancelar
                         </button>

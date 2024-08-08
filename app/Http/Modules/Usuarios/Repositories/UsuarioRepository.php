@@ -22,7 +22,7 @@ class UsuarioRepository
     }
 
     /**
-     * Listar los usuarios con filtros y paginación.
+     * Listar los users con filtros y paginación.
      *
      * @param Request $request Filtros.
      * @return LengthAwarePaginator : mixed Usuarios

@@ -5,19 +5,19 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                <h1 class="h3 mb-0 text-gray-800">Usuarios 2</h1>
+                <h1 class="h3 mb-0 text-gray-800">Usuarios</h1>
                 <a href="{{ route('create-usuario') }}" class="btn btn-primary btn-sm btn-icon-split">
                     <i class="fas fa-plus fa-sm"></i>
-                    Crear user
+                    Crear usuario
                 </a>
             </div>
         </div>
 
         <div class="card-body">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <button class="search-button">Buscar</button>
-            </div>
+{{--            <div class="search-container">--}}
+{{--                <input type="text" class="search-input" placeholder="Buscar...">--}}
+{{--                <button class="search-button">Buscar</button>--}}
+{{--            </div>--}}
             <div class="table-responsive">
                 <table class="styled-table">
                     <thead>
@@ -76,7 +76,7 @@
 
                                     Swal.fire({
                                         title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar el user "${userName} ${userLastName}"?`,
+                                        text: `¡Estás seguro de eliminar el usuario "${userName} ${userLastName}"?`,
                                         icon: 'warning',
                                         showCancelButton: true,
                                         confirmButtonColor: '#3085d6',

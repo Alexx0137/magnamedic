@@ -8,7 +8,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('usuarios.update', $user->id) }}" class="form">
+            <form method="POST" action="{{ route('users.update', $user->id) }}" class="form">
                 @csrf
                 @method('PUT')
                 <div class="form-row">
@@ -122,7 +122,7 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <button type="button" class="btn btn-secondary btn-sm mt-2 mx-1"
-                                onclick="window.location.href='{{ route('usuarios') }}'"
+                                onclick="window.location.href='{{ route('users') }}'"
                         >
                             <i class="fas fa-fw fa-arrow-left"></i>
                             Cancelar

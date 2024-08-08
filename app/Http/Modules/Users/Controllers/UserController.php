@@ -32,17 +32,17 @@ class UserController extends Controller
     }
 
     /**
-     * Muestra la lista de usuarios.
+     * Muestra la lista de users.
      *
      * @param Request $request Instancia de la solicitud HTTP.
-     * @return View Vista que contiene la lista de usuarios.
+     * @return View Vista que contiene la lista de users.
      * @author Nelson García
      */
     public function index(Request $request): View
     {
         $users = $this->user_repository->findAll($request);
 
-        return view('usuarios.index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -55,14 +55,14 @@ class UserController extends Controller
     {
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
-        return view('usuarios.create', compact('identificationTypes', 'roles'));
+        return view('users.create', compact('identificationTypes', 'roles'));
     }
 
     /**
      * Almacena una nueva usuario.
      *
      * @param SaveUserRequest $request Solicitud para guardar el nuevo usuario.
-     * @return RedirectResponse Redirige a la lista de usuarios con un mensaje de éxito.
+     * @return RedirectResponse Redirige a la lista de users con un mensaje de éxito.
      * @throws Exception
      * @author Nelson García
      */
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $this->user_service->create($request);
 
-        return redirect()->route('usuarios')
+        return redirect()->route('users')
             ->with('success', 'Usuario creado exitosamente');
     }
 
@@ -86,7 +86,7 @@ class UserController extends Controller
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
 
-        return view('usuarios.edit', compact('user', 'identificationTypes', 'roles'));
+        return view('users.edit', compact('user', 'identificationTypes', 'roles'));
     }
 
     /**
@@ -94,14 +94,14 @@ class UserController extends Controller
      *
      * @param SaveUserRequest $request Solicitud para actualizar el usuario.
      * @param int $id ID del usuario a actualizar.
-     * @return RedirectResponse Redirige a la lista de usuarios con un mensaje de éxito.
+     * @return RedirectResponse Redirige a la lista de users con un mensaje de éxito.
      */
     public function update(SaveUserRequest $request, int $id): RedirectResponse
     {
         $attributes = $request->validated();
         $this->user_service->update($attributes, $id);
 
-        return redirect()->route('usuarios')
+        return redirect()->route('users')
             ->with('success', 'Usuario actualizado con éxito.');
     }
 
@@ -110,7 +110,7 @@ class UserController extends Controller
      * Elimina unn usuario específico.
      *
      * @param int $id ID del usuario a eliminar.
-     * @return RedirectResponse Redirige a la lista de usuarios con un mensaje de éxito si se elimina correctamente.
+     * @return RedirectResponse Redirige a la lista de users con un mensaje de éxito si se elimina correctamente.
      * @throws Exception
      */
     public function destroy(int $id): RedirectResponse
@@ -118,12 +118,12 @@ class UserController extends Controller
          $user = $this->user_repository->findById($id);
 
          if (!$user) {
-             return redirect()->route('usuarios.index')
+             return redirect()->route('users.index')
                  ->with('error', 'Usuario no encontrado.');
          }
          $user->delete();
 
-        return redirect()->route('usuarios')
+        return redirect()->route('users')
             ->with('success', 'Usuario eliminada exitosamente.');
     }
 }
