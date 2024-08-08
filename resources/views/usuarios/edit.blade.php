@@ -8,7 +8,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('usuarios.update', $usuario->id) }}" class="form">
+            <form method="POST" action="{{ route('usuarios.update', $user->id) }}" class="form">
                 @csrf
                 @method('PUT')
                 <div class="form-row">
@@ -18,7 +18,7 @@
                                id="name"
                                name="name"
                                class="form-control"
-                               value="{{ old('name', $usuario->name) }}"
+                               value="{{ old('name', $user->name) }}"
                                autocomplete="given-name"
                                required
                         >
@@ -29,7 +29,7 @@
                                id="last_name"
                                name="last_name"
                                class="form-control"
-                               value="{{ old('last_name', $usuario->last_name) }}"
+                               value="{{ old('last_name', $user->last_name) }}"
                                required
                         >
                     </div>
@@ -41,7 +41,7 @@
                             <option value="" disabled>Seleccione una opción</option>
                             @foreach($identificationTypes as $identificationType)
                                 <option
-                                    value="{{ $identificationType->id }}" {{ $usuario->identification_type_id == $identificationType->id ? 'selected' : '' }}>
+                                    value="{{ $identificationType->id }}" {{ $user->identification_type_id == $identificationType->id ? 'selected' : '' }}>
                                     {{ $identificationType->name }}
                                 </option>
                             @endforeach
@@ -53,7 +53,7 @@
                                name="identification"
                                id="identification"
                                class="form-control"
-                               value="{{ old('identification', $usuario->identification) }}"
+                               value="{{ old('identification', $user->identification) }}"
                                required
                         >
                     </div>
@@ -65,7 +65,7 @@
                                id="email"
                                name="email"
                                class="form-control"
-                               value="{{ old('email', $usuario->email) }}"
+                               value="{{ old('email', $user->email) }}"
                                autocomplete="name"
                                required
                         >
@@ -76,7 +76,7 @@
                             <option value="" disabled>Seleccione una opción</option>
                             @foreach($roles as $role)
                                 <option
-                                    value="{{ $role->id }}" {{ $usuario->role_id == $role->id ? 'selected' : '' }}>
+                                    value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
                                     {{ $role->name }}
                                 </option>
                             @endforeach
@@ -107,12 +107,12 @@
                         <div>
                             <label class="form-check-label">
                                 <input type="radio" name="state" class="form-check-input"
-                                       value="1" {{ $usuario->state == 1 ? 'checked' : '' }}>
+                                       value="1" {{ $user->state == 1 ? 'checked' : '' }}>
                                 Activo
                             </label>
                             <label class="form-check-label">
                                 <input type="radio" name="state" class="form-check-input"
-                                       value="0" {{ $usuario->state == 0 ? 'checked' : '' }}>
+                                       value="0" {{ $user->state == 0 ? 'checked' : '' }}>
                                 Inactivo
                             </label>
                         </div>

@@ -8,7 +8,7 @@
                 <h1 class="h3 mb-0 text-gray-800">Usuarios</h1>
                 <a href="{{ route('create-usuario') }}" class="btn btn-primary btn-sm btn-icon-split">
                     <i class="fas fa-plus fa-sm"></i>
-                    Crear usuario
+                    Crear user
                 </a>
             </div>
         </div>
@@ -30,28 +30,28 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($usuarios as $usuario)
+                    @foreach ($users as $user)
                         <tr>
-                            <td>{{ $usuario->name }} {{ $usuario->last_name }}</td>
-                            <td>{{ $usuario->email }}</td>
-                            <td>{{ $usuario->role->name  }}</td>
+                            <td>{{ $user->name }} {{ $user->last_name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->role->name  }}</td>
                             <td>
-                                <span class="{{ $usuario->state == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
-                                    {{ $usuario->state == 1 ? 'Activo' : 'Inactivo' }}
+                                <span class="{{ $user->state == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
+                                    {{ $user->state == 1 ? 'Activo' : 'Inactivo' }}
                                 </span>
                             </td>
                             <td>
-                                <a href="{{ route('usuarios.edit', $usuario->id) }}"
+                                <a href="{{ route('usuarios.edit', $user->id) }}"
                                    class="icon-color btn btn-bg-light btn-sm btn-active-color-primary me-3"
                                    title="Editar">
                                     <i class="fas fa-edit fa-sm"></i>
                                 </a>
-                                <form action="{{ route('usuarios.destroy', $usuario->id) }}"
+                                <form action="{{ route('users.destroy', $user->id) }}"
                                       method="POST"
                                       style="display:inline;"
                                       class="delete-form"
-                                      data-name="{{ $usuario->name }}"
-                                      data-last_name="{{ $usuario->last_name }}">
+                                      data-name="{{ $user->name }}"
+                                      data-last_name="{{ $user->last_name }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -71,12 +71,12 @@
                                 form.addEventListener('submit', function (event) {
                                     event.preventDefault();
 
-                                    const usuarioName = form.getAttribute('data-name');
-                                    const usuarioLastName = form.getAttribute('data-last_name');
+                                    const userName = form.getAttribute('data-name');
+                                    const userLastName = form.getAttribute('data-last_name');
 
                                     Swal.fire({
                                         title: '¿Eliminar?',
-                                        text: `¡Estás seguro de eliminar el usuario "${usuarioName} ${usuarioLastName}"?`,
+                                        text: `¡Estás seguro de eliminar el user "${userName} ${userLastName}"?`,
                                         icon: 'warning',
                                         showCancelButton: true,
                                         confirmButtonColor: '#3085d6',
