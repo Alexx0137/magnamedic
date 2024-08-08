@@ -42,7 +42,7 @@ class UserController extends Controller
     {
         $users = $this->user_repository->findAll($request);
 
-        return view('users.index', compact('users'));
+        return view('usuarios.index', compact('users'));
     }
 
     /**
@@ -55,7 +55,7 @@ class UserController extends Controller
     {
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
-        return view('users.create', compact('identificationTypes', 'roles'));
+        return view('usuarios.create', compact('identificationTypes', 'roles'));
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller
         $identificationTypes = IdentificationType::all();
         $roles = Role::all();
 
-        return view('users.edit', compact('user', 'identificationTypes', 'roles'));
+        return view('usuarios.edit', compact('user', 'identificationTypes', 'roles'));
     }
 
     /**

@@ -131,7 +131,7 @@ return [
     | Maintenance Mode Driver
     |--------------------------------------------------------------------------
     |
-    | These users options determine the driver used to determine and
+    | These usuarios options determine the driver used to determine and
     | manage Laravel's "maintenance mode" status. The "cache" driver will
     | allow maintenance mode to be controlled across multiple machines.
     |

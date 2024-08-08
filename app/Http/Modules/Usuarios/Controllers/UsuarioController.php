@@ -43,9 +43,9 @@
 //     */
 //    public function index(Request $request): View
 //    {
-//        $users = $this->user_repository->findAll($request);
+//        $usuarios = $this->user_repository->findAll($request);
 //
-//        return view('usuarios.index', compact('users'));
+//        return view('usuarios.index', compact('usuarios'));
 //    }
 //
 //    /**
@@ -73,7 +73,7 @@
 //    {
 //        $this->user_service->create($request);
 //
-//        return redirect()->route('users')
+//        return redirect()->route('usuarios')
 //            ->with('success', 'Usuario creado exitosamente');
 //    }
 //
@@ -104,7 +104,7 @@
 //        $attributes = $request->validated();
 //        $this->user_service->update($attributes, $id);
 //
-//        return redirect()->route('users')
+//        return redirect()->route('usuarios')
 //            ->with('success', 'Usuario actualizado con éxito.');
 //    }
 //
@@ -126,7 +126,7 @@
 //        }
 //        $user->delete();
 //
-//        return redirect()->route('users')
+//        return redirect()->route('usuarios')
 //            ->with('success', 'Usuario eliminada exitosamente.');
 //    }
 //}

@@ -13,14 +13,14 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to your application's "home" route.
      *
-     * Typically, users are redirected here after authentication.
+     * Typically, usuarios are redirected here after authentication.
      *
      * @var string
      */
     public const HOME = '/dashboard';
 
     /**
-     * Define your route model bindings, pattern filters, and other route users.
+     * Define your route model bindings, pattern filters, and other route usuarios.
      */
     public function boot(): void
     {

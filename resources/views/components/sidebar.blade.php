@@ -32,9 +32,9 @@
         </li>
         <hr>
 
-{{--        <li class="{{ request()->is('users*') ? 'active' : '' }}">--}}
-{{--            <i class="fas fa-fw fa-users"></i>--}}
-{{--            <a href="{{ route('users') }}"><span>Usuarios</span></a>--}}
+{{--        <li class="{{ request()->is('usuarios*') ? 'active' : '' }}">--}}
+{{--            <i class="fas fa-fw fa-usuarios"></i>--}}
+{{--            <a href="{{ route('usuarios') }}"><span>Usuarios</span></a>--}}
 {{--        </li>--}}
         <li class="{{ request()->is('usuarios*') ? 'active' : '' }}">
             <i class="fas fa-fw fa-users"></i>
