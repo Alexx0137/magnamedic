@@ -85,7 +85,7 @@
 
                                     <hr/>
                                     <div class="text-center">
-                                        <a class="small" href="#">¿Olvidaste la contraseña?</a>
+{{--                                        <a class="small" href="#">¿Olvidaste la contraseña?</a>--}}
                                     </div>
                                 </div>
                             </div>
