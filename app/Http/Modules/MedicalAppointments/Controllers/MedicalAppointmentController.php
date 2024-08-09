@@ -74,9 +74,13 @@ class MedicalAppointmentController extends Controller
      */
     public function store(SaveMedicalAppointmentRequest $request): RedirectResponse
     {
-        $this->medical_appointment_service->create($request);
-
-        toastr()->success('Cita médica creada exitosamente', 'Notificación');
+        try {
+            $this->medical_appointment_service->create($request);
+            toastr()->success('Cita médica creada exitosamente', 'Notificación');
+        } catch (Exception $e) {
+            toastr()->error($e->getMessage(), 'Error');
+            return redirect()->back()->withInput();
+        }
 
         return redirect()->route('medical-appointments');
     }
@@ -139,19 +143,16 @@ class MedicalAppointmentController extends Controller
         return redirect()->route('medical-appointments');
     }
 
-    public function searchPatients(Request $request): JsonResponse
-    {
-        $term = $request->get('term');
-        $patients = Patient::where('name', 'LIKE', '%' . $term . '%')
-            ->orWhere('identification', 'LIKE', '%' . $term . '%')
-            ->get();
-        $results = [];
-        foreach ($patients as $patient) {
-            $results[] = ['value' => $patient->id, 'label' => $patient->name . ' - ' . $patient->identification];
-        }
-        return response()->json($results);
-    }
-
-
-
+//    public function searchPatients(Request $request): JsonResponse
+//    {
+//        $term = $request->get('term');
+//        $patients = Patient::where('name', 'LIKE', '%' . $term . '%')
+//            ->orWhere('identification', 'LIKE', '%' . $term . '%')
+//            ->get();
+//        $results = [];
+//        foreach ($patients as $patient) {
+//            $results[] = ['value' => $patient->id, 'label' => $patient->name . ' - ' . $patient->identification];
+//        }
+//        return response()->json($results);
+//    }
 }

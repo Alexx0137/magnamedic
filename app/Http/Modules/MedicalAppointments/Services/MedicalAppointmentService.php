@@ -35,6 +35,28 @@ class MedicalAppointmentService
     {
         $data = $request->validated();
 
+        // Obtener el ID del estado "Pendiente"
+        $pendingStateId = $this->medical_appointment_repository->findStateIdByCode(100); // Código 100 para "Pendiente"
+
+        if (!$pendingStateId) {
+            throw new Exception('Estado "Pendiente" no encontrado.');
+        }
+
+        // Agregar el estado "Pendiente" al array de datos
+        $data['appointment_state_id'] = $pendingStateId;
+
+        // Verificar si ya existe una cita pendiente para el paciente y la especialidad
+        $existingAppointment = $this->medical_appointment_repository
+            ->findByPatientAndSpecialityAndState(
+                $data['patient_id'],
+                $data['medical_speciality_id'],
+                $pendingStateId
+            );
+
+        if ($existingAppointment) {
+            throw new Exception('El paciente ya tiene una cita pendiente para esta especialidad.');
+        }
+
         return $this->medical_appointment_repository->create($data);
     }
 

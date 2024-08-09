@@ -2,6 +2,7 @@
 
 namespace App\Http\Modules\MedicalAppointments\Repositories;
 
+use App\Http\Modules\AppointmentsStates\Models\AppointmentState;
 use App\Http\Modules\MedicalAppointments\Models\MedicalAppointment;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,7 @@ class MedicalAppointmentRepository
                 $query->Where('date', 'like', '%' . $request->filter . '%')
                     ->orWhere('time', 'like', '%' . $request->filter . '%');
             })
+            ->orderBy('date', 'desc')
             ->paginate($request->per_page);
     }
 
@@ -58,5 +60,19 @@ class MedicalAppointmentRepository
     public function create(array $data): MedicalAppointment
     {
         return $this->model->create($data);
+    }
+
+    public function findStateIdByCode(int $code): ?int
+    {
+        $state = AppointmentState::where('code', $code)->first();
+        return $state ? $state->id : null;
+    }
+
+    public function findByPatientAndSpecialityAndState(int $patientId, int $specialityId, int $stateId)
+    {
+        return MedicalAppointment::where('patient_id', $patientId)
+            ->where('medical_speciality_id', $specialityId)
+            ->where('appointment_state_id', $stateId)
+            ->first();
     }
 }

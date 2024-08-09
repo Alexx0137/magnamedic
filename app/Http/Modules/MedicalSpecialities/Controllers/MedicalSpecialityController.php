@@ -51,7 +51,10 @@ class MedicalSpecialityController extends Controller
      */
     public function create(): View
     {
-        return view('medical_specialities.create');
+        $lastSpeciality = $this->medical_speciality_repository->findLastSpeciality();
+        $newCode = $lastSpeciality ? intval($lastSpeciality->code) + 100 : 100; // Inicia en 100 si no hay registros previos
+
+        return view('medical_specialities.create', compact('newCode'));
     }
 
     /**
@@ -64,11 +67,19 @@ class MedicalSpecialityController extends Controller
      */
     public function store(SaveMedicalSpecialityRequest $request): RedirectResponse
     {
+        $lastSpeciality = $this->medical_speciality_repository->findLastSpeciality();
+        $newCode = $lastSpeciality ? intval($lastSpeciality->code) + 1 : 100;
+
+        // Agregar el nuevo código al request
+        $request->merge(['code' => $newCode]);
+
+        // Llamar al servicio para crear la especialidad
         $this->medical_speciality_service->create($request);
 
         toastr()->success('Especialidad médica creada exitosamente', 'Notificación');
         return redirect()->route('medical-specialities');
     }
+
 
     /**
      * Muestra el formulario para editar una especialidad médica específica.

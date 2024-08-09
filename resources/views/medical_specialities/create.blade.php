@@ -15,7 +15,9 @@
                         <label>Código:</label>
                         <input type="number"
                                name="code"
+                               value="{{ $newCode ?? '' }}"
                                class="form-control"
+                               readonly
                         >
                     </div>
                     <div class="form-group col-md-6">
@@ -48,6 +50,15 @@
                         </button>
                     </div>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </form>
         </div>
     </div>

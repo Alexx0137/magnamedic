@@ -3,6 +3,7 @@
 namespace App\Http\Modules\Doctors\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Modules\Doctors\Models\Doctor;
 use App\Http\Modules\Doctors\Requests\SaveDoctorRequest;
 use App\Http\Modules\Doctors\Services\DoctorService;
 use App\Http\Modules\Doctors\Repositories\DoctorRepository;
@@ -11,6 +12,7 @@ use App\Http\Modules\IdentificationTypes\Models\IdentificationType;
 use App\Http\Modules\MedicalSpecialities\Models\MedicalSpeciality;
 use Exception;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -135,4 +137,16 @@ class DoctorController extends Controller
         toastr()->success('Médico eliminado exitosamente', 'Notificación');
         return redirect()->route('doctors');
     }
+
+    // DoctorController.php
+    public function getDoctorsBySpeciality(Request $request): JsonResponse
+    {
+        $specialityId = $request->query('speciality_id');
+
+        $doctors = Doctor::where('medical_speciality_id', $specialityId)
+            ->get(['id', 'name']);
+
+        return response()->json($doctors);
+    }
+
 }

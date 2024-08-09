@@ -31,7 +31,7 @@ class SaveMedicalAppointmentRequest extends FormRequest
         return [
 
             'patient_id' => 'required|exists:patients,id',
-            'appointment_state_id' => 'required|exists:appointment_states,id',
+            'appointment_state_id' => 'nullable|exists:appointment_states,id',
             'medical_speciality_id' => 'required|exists:medical_specialities,id',
             'doctor_id' => 'required|exists:doctors,id',
             'date' => 'required|date',

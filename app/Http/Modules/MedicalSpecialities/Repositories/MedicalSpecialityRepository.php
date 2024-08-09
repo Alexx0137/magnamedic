@@ -58,4 +58,11 @@ class MedicalSpecialityRepository
     {
         return $this->model->create($data);
     }
+
+
+    public function findLastSpeciality()
+    {
+        return MedicalSpeciality::orderBy('code', 'desc')->first();
+    }
+
 }

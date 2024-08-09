@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="identification">Número de documento:</label>
-                        <input type="text"
+                        <input type="number"
                                name="identification"
                                id="identification"
                                class="form-control"

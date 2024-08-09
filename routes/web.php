@@ -66,6 +66,7 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/medical-specialities/form/{id}', 'edit')->name('medical-specialities.edit');
         Route::put('/medical-specialities/form/{id}', 'update')->name('medical-specialities.update');
         Route::delete('/medical-specialities/{id}', 'destroy')->name('medical-specialities.destroy');
+        Route::get('medical-specialities/last',  'last')->name('medical-specialities.last');
     });
 
     // Doctors
@@ -76,7 +77,7 @@ Route::middleware(['auth', 'auth.user'])->group(function () {
         Route::get('/doctors/form/{id}', 'edit')->name('doctors.edit');
         Route::put('/doctors/form/{id}', 'update')->name('doctors.update');
         Route::delete('/doctors/{id}', 'destroy')->name('doctors.destroy');
-
+        Route::get('/doctors/speciality', [DoctorController::class, 'getDoctorsBySpeciality']);
     });
 
 

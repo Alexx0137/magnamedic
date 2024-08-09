@@ -17,15 +17,16 @@
                         <label for="patient_search">Buscar Paciente:</label>
                         <input type="text" class="form-control" id="patient_search"
                                placeholder="Buscar paciente por nombre o ID" value="{{ $appointment->patient->name }}"
-                               required>
+                               readonly
+                        >
                         <input type="hidden" id="patient_id" name="patient_id" value="{{ $appointment->patient_id }}"
-                               required>
+                               >
                         <ul id="patient_suggestions" class="list-group"></ul>
                     </div>
                     <!-- Estado -->
                     <div class="col-md-6 mb-3">
                         <label for="appointment_state_id">Estado:</label>
-                        <select class="form-control" id="appointment_state_id" name="appointment_state_id" required>
+                        <select class="form-control" id="appointment_state_id" name="appointment_state_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($appointmentStates as $state)
                                 <option
@@ -40,7 +41,7 @@
                     <!-- Selección de Especialidad -->
                     <div class="col-md-6 mb-3">
                         <label for="medical_speciality_id">Especialidad:</label>
-                        <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" required>
+                        <select class="form-control" id="medical_speciality_id" name="medical_speciality_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($specialities as $speciality)
                                 <option
@@ -53,7 +54,7 @@
                     <!-- Selección del Médico -->
                     <div class="col-md-6 mb-3">
                         <label for="doctor_id">Médico:</label>
-                        <select class="form-control" id="doctor_id" name="doctor_id" required>
+                        <select class="form-control" id="doctor_id" name="doctor_id" >
                             <option value="" disabled selected>Seleccione una opción</option>
                             @foreach($doctors as $doctor)
                                 <option
@@ -73,7 +74,7 @@
                                id="date"
                                name="date"
                                value="{{ old('date', $appointment->date) }}"
-                               required>
+                               >
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="time">Hora de la Cita:</label>
@@ -82,7 +83,7 @@
                                id="time"
                                name="time"
                                value="{{ old('time', $appointment->time) }}"
-                               required
+
                                min="06:00"
                                max="18:00">
                     </div>

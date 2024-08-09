@@ -31,7 +31,7 @@ class SaveMedicalSpecialityRequest extends FormRequest
         return [
             'code'            => 'required|integer',
             'name'            => 'required|max:45',
-            'consulting_room' => 'required|max:10'
+            'consulting_room' => 'max:10'
         ];
     }
 

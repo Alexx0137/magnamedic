@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="identification">Número de documento:</label>
-                        <input type="text" id="identification" class="form-control" name="identification" placeholder="" >
+                        <input type="number" id="identification" class="form-control" name="identification" placeholder="" >
                     </div>
                 </div>
                 <div class="form-row">
